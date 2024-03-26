@@ -1,0 +1,198 @@
+{
+  "project_info": {
+    "project_number": "305241309976",
+    "project_id": "maps-flutter-59331",
+    "storage_bucket": "maps-flutter-59331.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305241309976:android:7780474e57b5bb4fa0946d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_google_map_integration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305241309976-mjvtsr0j9qp5b453lkpuu5j19php4meb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_google_map_integration",
+            "certificate_hash": "2a1f4abdbabdb48e07b56343354160b331452cba"
+          }
+        },
+        {
+          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterGoogleMapIntegration"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305241309976:android:fac98a7505caa904a0946d",
+        "android_client_info": {
+          "package_name": "com.example.google_map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterGoogleMapIntegration"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305241309976:android:fb27a75bc2e21788a0946d",
+        "android_client_info": {
+          "package_name": "com.example.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterGoogleMapIntegration"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305241309976:android:ca67ce0f09a362aca0946d",
+        "android_client_info": {
+          "package_name": "com.example.pallets_taxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterGoogleMapIntegration"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305241309976:android:5aaaa607f362c090a0946d",
+        "android_client_info": {
+          "package_name": "com.example.pallets_taxi_driver_pannel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterGoogleMapIntegration"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
