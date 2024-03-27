@@ -26,6 +26,28 @@ class CustomBackButton extends StatelessWidget {
   }
 }
 
+class OutlinedIconButton extends StatelessWidget {
+  final IconData icon;
+  final Function()? onTap;
+  const OutlinedIconButton(
+      {required this.icon, required this.onTap, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: onTap,
+      icon: Icon(icon),
+      style: IconButton.styleFrom(
+        padding: EdgeInsets.zero,
+        side: const BorderSide(color: borderColor),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.sp),
+        ),
+      ),
+    );
+  }
+}
+
 class AnimatedTabButton extends StatelessWidget {
   final String text;
   final bool selected;

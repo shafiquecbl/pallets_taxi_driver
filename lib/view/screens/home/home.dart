@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/common/text.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
-import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/enums.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification_view.dart';
@@ -24,18 +24,9 @@ class HomeScreen extends StatelessWidget {
         toolbarHeight: kToolbarHeight * 1.5.sp,
         title: const Text("Good Day, Jackson"),
         actions: [
-          IconButton(
-            onPressed: () {
-              launchScreen(const NotificationView());
-            },
-            icon: const Icon(Iconsax.notification),
-            style: IconButton.styleFrom(
-              padding: EdgeInsets.zero,
-              side: const BorderSide(color: borderColor),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.sp),
-              ),
-            ),
+          OutlinedIconButton(
+            icon: Iconsax.notification,
+            onTap: () => launchScreen(const NotificationView()),
           ),
           SizedBox(width: 10.sp),
         ],

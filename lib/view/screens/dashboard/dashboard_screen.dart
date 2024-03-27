@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/history/history_view.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/history/history.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/home.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/profile/profile.dart';
 
@@ -18,7 +18,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     const HomeScreen(),
-    const HistoryView(),
+    const HistoryScreen(),
     ProfileView(),
   ];
   @override
