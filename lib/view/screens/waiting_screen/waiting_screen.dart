@@ -1,56 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
-import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 
 class WaitingScreen extends StatelessWidget {
-  final String title;
-  const WaitingScreen({super.key, required this.title});
+  const WaitingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 80,
-        toolbarHeight: kToolbarHeight * 2,
-        automaticallyImplyLeading: false,
-        leading: FittedBox(
-          fit: BoxFit.none,
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: borderColor),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10)),
-            child: IconButton(
-                onPressed: () {
-                  pop();
-                },
-                icon: const Icon(Icons.arrow_back_ios_new_sharp)),
-          ),
-        ),
-        title: Text(
-          'Sign Up',
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-      ),
       body: Padding(
         padding: pagePadding,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge!
-                  .copyWith(color: primaryColor),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Image.asset(Images.waiting_image),
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Waiting for Admin\nApproval!',
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontSize: 24.sp, fontWeight: FontWeight.w600),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 40.sp),
+                child: Image.asset(Images.waiting_image, width: 200.sp),
+              ),
+              Text(
+                'Your request was sent to admin and is under processing. Please wait for the approval.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
         ),
       ),
     );

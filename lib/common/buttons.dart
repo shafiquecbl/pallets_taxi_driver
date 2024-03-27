@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:pallets_taxi_driver_pannel/common/responsive.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 
@@ -14,7 +13,7 @@ class CustomBackButton extends StatelessWidget {
       fit: BoxFit.none,
       child: IconButton(
         onPressed: pop,
-        icon: const Icon(Icons.arrow_back_ios_new_sharp),
+        icon: Icon(Icons.arrow_back_ios_new_sharp, size: 20.sp),
         style: IconButton.styleFrom(
           padding: EdgeInsets.zero,
           side: const BorderSide(color: borderColor),
@@ -46,7 +45,7 @@ class AnimatedTabButton extends StatelessWidget {
       child: AnimatedContainer(
         padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         duration: const Duration(milliseconds: 300),
-        height: 40 + (ResponsiveWidget.isMobile() ? 0 : 25),
+        height: 40.sp,
         decoration: BoxDecoration(
           color: selected ? color ?? primaryColor : null,
           borderRadius: BorderRadius.circular(10),

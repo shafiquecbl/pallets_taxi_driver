@@ -58,12 +58,13 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: defautSpacing),
 
           PageHeading(
-              title: "New Requests",
-              traling: TextButton(
-                onPressed: () {},
-                child: Text("View all",
-                    style: Theme.of(context).textTheme.bodyMedium!),
-              )),
+            title: "New Requests",
+            traling: TextButton(
+              onPressed: () {},
+              child: Text("View all",
+                  style: Theme.of(context).textTheme.bodyMedium!),
+            ),
+          ),
 
           /// Recent Shipping List
           const RecentShippingList(),

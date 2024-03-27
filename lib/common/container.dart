@@ -42,7 +42,8 @@ class DottedVerticalLine extends StatelessWidget {
   final double strokeWidth;
   final double gap;
 
-  DottedVerticalLine({
+  const DottedVerticalLine({
+    super.key,
     this.height = 100,
     this.color = Colors.black,
     this.strokeWidth = 1,

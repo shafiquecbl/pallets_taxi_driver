@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat_messaging_view.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification_view.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/your_documents/YourDocuments.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
 
 class ProfileView extends StatelessWidget {
   ProfileView({super.key});
@@ -51,7 +53,7 @@ class ProfileView extends StatelessWidget {
             StatefulBuilder(
               builder: (context, setState) => UserProfileListTile(
                 text: 'Status',
-                leadingImageAddress: Images.status_icon,
+                image: Images.status_icon,
                 trailing: Switch(
                   value: status,
                   onChanged: (value) {
@@ -64,36 +66,42 @@ class ProfileView extends StatelessWidget {
 
             UserProfileListTile(
               text: 'Notification',
-              leadingImageAddress: Images.notification_icon,
+              image: Images.notification_icon,
               onTap: () {
                 launchScreen(const NotificationView());
               },
             ),
             UserProfileListTile(
               text: 'FAQ',
-              leadingImageAddress: Images.faq_icon,
+              image: Images.faq_icon,
               onTap: () {
                 launchScreen(const ChatView());
               },
             ),
             UserProfileListTile(
               text: 'Privacy Policy',
-              leadingImageAddress: Images.privacy_icon,
+              image: Images.privacy_icon,
               onTap: () {},
             ),
 
             UserProfileListTile(
               text: 'About Us',
-              leadingImageAddress: Images.about_icon,
+              image: Images.about_icon,
               onTap: () {},
             ),
 
             UserProfileListTile(
               text: 'Customer Documentations',
-              leadingImageAddress: Images.document_image,
+              image: Images.document_image,
               onTap: () {
-                launchScreen(const YourDocuments());
+                launchScreen(const DocumentVerificationScreen());
               },
+            ),
+            UserProfileListTile(
+              text: 'Sign Out',
+              image: Images.document_image,
+              icon: Icon(Iconsax.logout, color: Colors.red, size: 30.sp),
+              onTap: AuthController.find.logout,
             )
           ],
         ),
@@ -105,13 +113,15 @@ class ProfileView extends StatelessWidget {
 class UserProfileListTile extends StatelessWidget {
   final String text;
   final void Function()? onTap;
-  final String leadingImageAddress;
+  final String image;
+  final Widget? icon;
   final Widget? trailing;
   const UserProfileListTile(
       {super.key,
       required this.text,
       this.onTap,
-      required this.leadingImageAddress,
+      required this.image,
+      this.icon,
       this.trailing});
 
   @override
@@ -130,7 +140,7 @@ class UserProfileListTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                Image.asset(leadingImageAddress),
+                icon ?? Image.asset(image),
                 const SizedBox(
                   width: 10,
                 ),

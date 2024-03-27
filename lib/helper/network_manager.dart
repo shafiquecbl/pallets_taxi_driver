@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
-import 'package:pallets_taxi_driver_pannel/utils/popups/popup_snackbar.dart';
+import 'package:pallets_taxi_driver_pannel/view/base/popup_snackbar.dart';
 
 class NetworkManager extends GetxController {
   static NetworkManager get instance => Get.find();

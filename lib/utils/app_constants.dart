@@ -1,13 +1,26 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:pallets_taxi_driver_pannel/data/model/language.dart';
-
 import 'images.dart';
 
 class AppConstants {
-  //
   static const String APP_NAME = 'Umash';
-  static const String CONFIG = '/api/config';
+  static const String BASE_URL = 'https://pallettaxi.hostdonor.com';
+
+  // endpoints
+  static const String APP_SETTING = '/api/appsetting';
+
+  // document
+  static const String SUBMITTED_DOCUMENTS = '/api/driver-document-list';
+  static const String SUBMIT_DOCUMENTS = '/api/driver-document-save';
+
+  // auth
+  static const String REGISTER_URI = '/api/driver-register';
+  static const String LOGIN_URI = '/api/login';
+  static const String TOKEN_URI = '/api/customer/cm-firebase-token';
+
+  // profile
+  static const String PROFILE_URI = '/api/user-detail';
 
   // Shared Key
   static const String THEME = 'theme';

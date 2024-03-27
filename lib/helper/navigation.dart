@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/user_model.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/dashboard/dashboard_screen.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/waiting_screen/waiting_screen.dart';
 
 pop() => Navigator.pop(Get.context!);
+
+goToDashboard(UserModel? user) {
+  if (user != null && user.isDocumentRequired) {
+    launchScreen(const DocumentVerificationScreen(), pushAndRemove: true);
+  } else if (user != null &&
+      user.isVerifiedDriver == false &&
+      user.status == 'pending') {
+    launchScreen(const WaitingScreen(), pushAndRemove: true);
+  } else {
+    launchScreen(const DashboardScreen(), pushAndRemove: true);
+  }
+}
 
 /// Launch a new screen
 Future<dynamic> launchScreen(Widget child,

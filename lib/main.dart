@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:pallets_taxi_driver_pannel/firebase_options.dart';
+import 'common/loading.dart';
 import 'helper/get_di.dart' as di;
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:pallets_taxi_driver_pannel/theme/light_theme.dart';
@@ -50,7 +52,10 @@ class MainApp extends StatelessWidget {
         builder: (context, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: light(context: context),
+            theme: light(),
+            navigatorObservers: [FlutterSmartDialog.observer],
+            builder: FlutterSmartDialog.init(
+                loadingBuilder: (string) => const Loading()),
             home: const SplashScreen(),
           );
         });

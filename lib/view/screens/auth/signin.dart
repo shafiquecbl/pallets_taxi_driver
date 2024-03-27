@@ -3,13 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/common/textfield.dart';
+import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/user_model.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/utils/validators/validation.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/auth/signup.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/location/location_view.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -65,7 +67,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   onPressed: _toogleObsureText,
                 ),
-                maxLines: 1,
                 validator: (value) => TValidator.validatePassword(value),
                 padding: EdgeInsets.zero,
               ),
@@ -84,11 +85,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 30.sp),
               SizedBox(
                 width: double.infinity,
-                child: PrimaryButton(
-                  text: "Sign In",
-                  onPressed: () =>
-                      launchScreen(const LocationScreen(), pushAndRemove: true),
-                ),
+                child: PrimaryButton(text: "Sign In", onPressed: _signinScreen),
               ),
               const Spacer(),
               RichText(
@@ -112,5 +109,18 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
+  }
+
+  _signinScreen() {
+    if (_formkey.currentState!.validate()) {
+      final email = _emailController.text.trim();
+      final password = _passwordController.text;
+      AuthController.find.login(email, password).then((value) async {
+        if (value.isSuccess) {
+          UserModel? user = await ProfileController.find.getProfile();
+          goToDashboard(user);
+        }
+      });
+    }
   }
 }

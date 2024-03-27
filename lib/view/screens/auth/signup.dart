@@ -3,13 +3,17 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
+import 'package:pallets_taxi_driver_pannel/common/snackbar.dart';
 import 'package:pallets_taxi_driver_pannel/common/text.dart';
 import 'package:pallets_taxi_driver_pannel/common/textfield.dart';
+import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/body/singup_model.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/utils/validators/validation.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -23,12 +27,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _emailController = TextEditingController();
-  final _addressController = TextEditingController();
-  final _stateController = TextEditingController();
-  final _vehicaleController = TextEditingController();
+  final _vehicleController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isComercialAuto = false;
   bool _isDotMT = false;
+  String _countryCode = "IT";
 
   _toogleCommercial() {
     setState(() {
@@ -47,9 +50,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _nameController.dispose();
     _phoneNumberController.dispose();
     _emailController.dispose();
-    _addressController.dispose();
-    _stateController.dispose();
-    _vehicaleController.dispose();
+
+    _vehicleController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -71,40 +73,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 10.sp),
             const PageHeading(title: "Fill All The Field"),
 
-            // FORM START
+            // FORM START,
 
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20.sp),
             CustomTextField(
-              validator: (value) => TValidator.validateName(value),
               controller: _nameController,
               hintText: "Name",
-              maxLines: 1,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter name";
+                } else {
+                  return null;
+                }
+              },
             ),
 
             CustomTextField(
-              validator: (value) => TValidator.validateEmail(value),
               controller: _emailController,
               hintText: "Email",
-              maxLines: 1,
+              validator: TValidator.validateEmail,
             ),
 
             CustomTextField(
-              validator: (value) => TValidator.validatePassword(value),
               controller: _passwordController,
               obscureText: true,
               hintText: "Password",
-              maxLines: 1,
+              validator: TValidator.validatePassword,
             ),
 
             PhoneNumberField(
-              initalValue: "IT",
-              validator: (value) => TValidator.validatePhoneNumber(value),
+              initalValue: _countryCode,
               controller: _phoneNumberController,
+              validator: TValidator.validatePhoneNumber,
+              onChanged: (value) {
+                _countryCode = value.dialCode ?? _countryCode;
+              },
             ),
 
             CustomTextField(
+              hintText: "Vehicale Number",
+              controller: _vehicleController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please enter state";
@@ -112,35 +120,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   return null;
                 }
               },
-              hintText: "Address",
-              maxLines: 1,
-              controller: _addressController,
-            ),
-
-            CustomTextField(
-              hintText: "State",
-              maxLines: 1,
-              validator: (p0) {
-                if (p0 == null || p0.isEmpty) {
-                  return "Please enter state";
-                } else {
-                  return null;
-                }
-              },
-              controller: _stateController,
-            ),
-
-            CustomTextField(
-              hintText: "Vehicale Number",
-              maxLines: 1,
-              validator: (p0) {
-                if (p0 == null || p0.isEmpty) {
-                  return "Please enter state";
-                } else {
-                  return null;
-                }
-              },
-              controller: _vehicaleController,
             ),
 
             Padding(
@@ -179,10 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             // FORM END
 
             SizedBox(height: 20.sp),
-            PrimaryButton(
-              text: "Sign Up",
-              onPressed: () {},
-            ),
+            PrimaryButton(text: "Sign Up", onPressed: _signup),
             SizedBox(height: 30.sp),
             Center(
               child: RichText(
@@ -209,7 +185,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   _signup() {
     if (_formKey.currentState!.validate()) {
-      // call api
+      SignUpModel model = SignUpModel(
+        name: _nameController.text.trim(),
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+        phoneNumber: _countryCode + _phoneNumberController.text,
+        vehicleNumber: _vehicleController.text,
+        dotMc: _isDotMT,
+        commercialAuto: _isComercialAuto,
+      );
+      AuthController.find.registration(model).then((value) {
+        showToast('Registration Successfull');
+        launchScreen(const DocumentVerificationScreen(), pushAndRemove: true);
+      });
     }
   }
 }
@@ -230,10 +218,9 @@ class PhoneNumberField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.sp),
-      // height: 60,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.sp),
         border: Border.all(color: borderColor),
       ),
       child: Row(children: [
@@ -255,7 +242,7 @@ class PhoneNumberField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             validator: validator,
-            maxLines: 1,
+            keyboardType: TextInputType.phone,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "Enter phone number",

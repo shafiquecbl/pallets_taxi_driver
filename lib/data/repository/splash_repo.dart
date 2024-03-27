@@ -1,9 +1,15 @@
+import 'package:http/http.dart';
+import 'package:pallets_taxi_driver_pannel/data/api/api_client.dart';
 import 'package:pallets_taxi_driver_pannel/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashRepo {
+  final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
-  SplashRepo({required this.sharedPreferences});
+  SplashRepo({required this.apiClient, required this.sharedPreferences});
+
+  Future<Response?> getAppSettings() async =>
+      await apiClient.getData(AppConstants.APP_SETTING);
 
   Future<bool> initSharedData() async {
     if (!sharedPreferences.containsKey(AppConstants.THEME)) {
