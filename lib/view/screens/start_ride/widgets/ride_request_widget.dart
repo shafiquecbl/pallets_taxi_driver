@@ -41,13 +41,29 @@ class RideRequestSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: pagePadding.copyWith(top: 10.sp),
-      color: Colors.white,
+      padding: pagePadding,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.sp)),
+        boxShadow: boxShadow(),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          Center(
+            child: Container(
+              width: 50.sp,
+              height: 5.sp,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
+            ),
+          ),
+          SizedBox(height: 20.sp),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(40.sp),
@@ -70,18 +86,38 @@ class RideRequestSheet extends StatelessWidget {
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 5.sp),
-                    Row(
+                    Wrap(
+                      spacing: 15.sp,
+                      runSpacing: 2.sp,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Icon(Icons.location_on, size: 14.sp),
-                        Text(
-                          driveDistance,
-                          style: Theme.of(context).textTheme.bodySmall,
+                        Wrap(
+                          spacing: 2.sp,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Icon(Iconsax.location5, size: 13.sp),
+                            Text(
+                              driveDistance,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 10.sp),
                         Text(
                           arrivalTime,
                           style: Theme.of(context).textTheme.bodySmall,
-                        )
+                        ),
+                        Text(
+                          "● $noOfHelpers Helpers",
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        Text(
+                          "● $sizeOfBox",
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                        Text(
+                          "● $sizeOgBlock",
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                       ],
                     ),
                   ],

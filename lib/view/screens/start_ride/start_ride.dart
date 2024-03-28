@@ -49,10 +49,8 @@ class _StartRideScreenState extends State<StartRideScreen> {
         key: key,
         animationDurationExtend: const Duration(milliseconds: 250),
         animationDurationContract: const Duration(milliseconds: 250),
-        persistentContentHeight: 80.sp,
-        enableToggle: true,
+        persistentContentHeight: 120.sp,
         isDraggable: true,
-
         // This is the background of the bottom sheet.
         background: GoogleMap(
           mapType: MapType.normal,
@@ -66,24 +64,6 @@ class _StartRideScreenState extends State<StartRideScreen> {
           },
         ),
 
-        // This is the header of the bottom sheet. (drag handle)
-        persistentHeader: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20.sp)),
-          ),
-          constraints: const BoxConstraints.expand(height: 40),
-          child: Center(
-            child: Container(
-              width: 50.sp,
-              height: 5.sp,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(10.sp),
-              ),
-            ),
-          ),
-        ),
         //This is the content of the bottom sheet which will be extendable by dragging.
         expandableContent: RideRequestSheet(
           arrivalTime: "(5 mins away)",

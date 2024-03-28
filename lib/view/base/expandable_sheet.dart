@@ -102,10 +102,13 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
       vsync: this,
       lowerBound: 0.0,
       upperBound: 1.0,
+      value: 1.0, // Start fully expanded
     );
     _controller.addStatusListener(_handleAnimationStatusUpdate);
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => _afterUpdateWidgetBuild(true));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _afterUpdateWidgetBuild(true);
+      expand();
+    });
   }
 
   @override
