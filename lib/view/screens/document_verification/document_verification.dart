@@ -13,7 +13,8 @@ import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 
 class DocumentVerificationScreen extends StatefulWidget {
-  const DocumentVerificationScreen({super.key});
+  final bool fromSettings;
+  const DocumentVerificationScreen({this.fromSettings = false, super.key});
 
   @override
   State<DocumentVerificationScreen> createState() =>
@@ -60,16 +61,18 @@ class _DocumentVerificationScreenState
                 ],
               );
       }),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: CustomMaterialButton(
-          text: "Go to Dashboard",
-          ontab: () {
-            final user = ProfileController.find.userModel;
-            goToDashboard(user);
-          },
-        ),
-      ),
+      bottomNavigationBar: widget.fromSettings
+          ? const SizedBox()
+          : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: CustomMaterialButton(
+                text: "Go to Dashboard",
+                ontab: () {
+                  final user = ProfileController.find.userModel;
+                  goToDashboard(user);
+                },
+              ),
+            ),
     );
   }
 }

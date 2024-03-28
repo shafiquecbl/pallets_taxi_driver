@@ -8,7 +8,7 @@ import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/enums.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/history/widgets/history_tabs.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/history/widgets/history_view.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification_view.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -29,7 +29,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         actions: [
           OutlinedIconButton(
             icon: Iconsax.notification,
-            onTap: () => launchScreen(const NotificationView()),
+            onTap: () => launchScreen(const NotificationScreen()),
           ),
           SizedBox(width: 10.sp),
         ],

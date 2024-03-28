@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 
 class EarningTransactionContainer extends StatelessWidget {
   final double price;
@@ -19,54 +21,47 @@ class EarningTransactionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(10),
+      padding: pagePadding,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade300,
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(8.sp),
+        boxShadow: boxShadow(opacity: 0.1),
       ),
       child: Row(
         children: [
-          const SizedBox(width: 8),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(date)
+                SizedBox(height: 10.sp),
+                Text(date, style: Theme.of(context).textTheme.bodySmall)
               ],
             ),
           ),
-          const SizedBox(width: 8),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          SizedBox(width: 10.sp),
+          Wrap(
+            spacing: 5.sp,
             children: [
-              Row(
-                children: [
-                  Text(
-                    "\$ $price",
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Icon(
-                    isDebt ? Icons.arrow_upward : Icons.arrow_downward,
-                  )
-                ],
+              Text(
+                "\$ $price",
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(fontWeight: FontWeight.w600),
+              ),
+              RotatedBox(
+                quarterTurns: isDebt ? 0 : 2,
+                child: Icon(
+                  Icons.arrow_outward_rounded,
+                  color: isDebt ? Colors.red : Colors.green,
+                ),
               )
             ],
           ),

@@ -6,10 +6,10 @@ import 'package:pallets_taxi_driver_pannel/common/text.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/enums.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification_view.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/start_ride/start_ride_view.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/start_ride/start_ride.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/current_tracking.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/recent_shipping.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/request_list.dart';
 import 'widgets/stats_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,12 +21,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
-        toolbarHeight: kToolbarHeight * 1.5.sp,
         title: const Text("Good Day, Jackson"),
         actions: [
           OutlinedIconButton(
             icon: Iconsax.notification,
-            onTap: () => launchScreen(const NotificationView()),
+            onTap: () => launchScreen(const NotificationScreen()),
           ),
           SizedBox(width: 10.sp),
         ],
@@ -42,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             currentOrderId: "#123456789",
             status: "On the way",
             onTap: () {
-              launchScreen(const StartRideView());
+              launchScreen(const StartRideScreen());
             },
           ),
 
@@ -58,7 +57,7 @@ class HomeScreen extends StatelessWidget {
           ),
 
           /// Recent Shipping List
-          const RecentShippingList(),
+          const NewRequestList(),
         ],
       ),
     );

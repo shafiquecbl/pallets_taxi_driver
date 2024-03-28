@@ -1,4 +1,5 @@
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/document_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/history_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
@@ -39,6 +40,7 @@ Future<void> init() async {
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
   Get.lazyPut(() => SplashController(splashRepo: Get.find()));
+  Get.lazyPut(() => DashboardController());
   Get.lazyPut(() => AuthController(authRepo: Get.find()));
   Get.lazyPut(() => ProfileController(profileRepo: Get.find()));
   Get.lazyPut(() => DocumentController(documentRepo: Get.find()));

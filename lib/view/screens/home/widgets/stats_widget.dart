@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
+import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/earnings/earnings_view.dart';
 
 class StatsWIdget extends StatelessWidget {
   const StatsWIdget({super.key});
@@ -19,9 +18,7 @@ class StatsWIdget extends StatelessWidget {
             flex: 5,
             child: TotalEarningButton(
               totalEarning: "\$ 10.00",
-              onTap: () {
-                launchScreen(const EarningView());
-              },
+              onTap: () => DashboardController.find.selectedIndex = 1,
             ),
           ),
           SizedBox(width: defautSpacing),

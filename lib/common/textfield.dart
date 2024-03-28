@@ -115,36 +115,35 @@ class CustomDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField(
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        focusedBorder: InputBorder.none,
-        enabledBorder: InputBorder.none,
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        hintText: hintText,
-        hintStyle: Theme.of(context)
+    return Padding(
+      padding: EdgeInsets.only(bottom: 20.sp),
+      child: DropdownButtonFormField(
+        decoration: InputDecoration(
+          border: border(),
+          focusedBorder: border(),
+          enabledBorder: border(),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          hintText: hintText,
+          hintStyle: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(fontWeight: FontWeight.normal),
+          contentPadding: EdgeInsets.all(17.sp),
+          suffixIcon: suffixIcon,
+        ),
+        style: Theme.of(context)
             .textTheme
             .bodyMedium
             ?.copyWith(fontWeight: FontWeight.normal),
-        contentPadding: const EdgeInsets.all(15),
-        suffixIcon: suffixIcon,
+        items: items,
+        isExpanded: true,
+        onChanged: onChanged,
       ),
-      style: Theme.of(context)
-          .textTheme
-          .bodyMedium
-          ?.copyWith(fontWeight: FontWeight.normal),
-      items: items,
-      isExpanded: true,
-      onChanged: onChanged,
     );
   }
 
-  InputBorder border(BuildContext context, {Color? color}) =>
-      OutlineInputBorder(
-        borderSide: BorderSide(
-          color: color ?? Theme.of(context).cardColor,
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(5),
+  InputBorder border({Color? color}) => OutlineInputBorder(
+        borderSide: BorderSide(color: color ?? borderColor),
+        borderRadius: BorderRadius.circular(10.sp),
       );
 }

@@ -1,53 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/widgets/chat_list.dart';
 
-class ChatView extends StatelessWidget {
-  const ChatView({super.key});
+class ChatScreen extends StatelessWidget {
+  const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leadingWidth: 80,
-          toolbarHeight: kToolbarHeight * 2,
-          automaticallyImplyLeading: false,
-          leading: FittedBox(
-            fit: BoxFit.none,
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: borderColor),
-                  borderRadius: BorderRadius.circular(10)),
-              child: IconButton(
-                  onPressed: () {
-                    pop();
-                  },
-                  icon: const Icon(Icons.arrow_back_ios_new_sharp)),
-            ),
-          ),
-          title: Text(
-            'Chat',
-            style: Theme.of(context)
-                .textTheme
-                .displaySmall!
-                .copyWith(fontSize: 24),
-          ),
+          leading: const CustomBackButton(),
+          title: const Text('Chat'),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: FittedBox(
-                fit: BoxFit.none,
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: borderColor),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.call_outlined)),
-                ),
-              ),
-            ),
+            OutlinedIconButton(icon: Icons.call_outlined, onTap: () {}),
+            SizedBox(width: 10.sp),
           ]),
       body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
