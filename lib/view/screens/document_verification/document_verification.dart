@@ -11,6 +11,7 @@ import 'package:pallets_taxi_driver_pannel/data/model/response/document_model.da
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
+import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 
 class DocumentVerificationScreen extends StatefulWidget {
   final bool fromSettings;
@@ -61,13 +62,13 @@ class _DocumentVerificationScreenState
                 ],
               );
       }),
-      bottomNavigationBar: widget.fromSettings
+      bottomNavigationBar: !widget.fromSettings
           ? const SizedBox()
           : Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: CustomMaterialButton(
+              padding: pagePadding,
+              child: PrimaryButton(
                 text: "Go to Dashboard",
-                ontab: () {
+                onPressed: () {
                   final user = ProfileController.find.userModel;
                   goToDashboard(user);
                 },

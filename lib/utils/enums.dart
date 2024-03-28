@@ -1,12 +1,3 @@
-enum ShippingStatus {
-  upcomming,
-  completed,
-  cenceled,
-}
+enum ShippingStatus { upcomming, completed, cenceled }
 
-enum UploadingStatus {
-  uploading,
-  uploaded,
-  failed,
-  notUploaded,
-}
+enum UploadingStatus { uploading, uploaded, failed, notUploaded }

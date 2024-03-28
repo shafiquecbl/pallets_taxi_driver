@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
-import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
+import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/location/location_view.dart';
 
 class VarificationScreen extends StatelessWidget {
@@ -92,11 +92,9 @@ class VarificationScreen extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
-              child: CustomMaterialButton(
+              child: PrimaryButton(
                   text: "Verify",
-                  ontab: () async {
-                    launchScreen(const LocationScreen());
-                  }),
+                  onPressed: () => launchScreen(const LocationScreen())),
             ),
           ],
         ),
