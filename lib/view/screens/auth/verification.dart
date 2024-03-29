@@ -6,7 +6,7 @@ import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/location/location_view.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/location/location.dart';
 
 class VarificationScreen extends StatelessWidget {
   const VarificationScreen({super.key});

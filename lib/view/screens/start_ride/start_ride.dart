@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
-import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/expandable_sheet.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/cancel_request/cancel_request.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/start_ride/widgets/ride_request_widget.dart';
@@ -59,9 +58,7 @@ class _StartRideScreenState extends State<StartRideScreen> {
             target: LatLng(37.7749, -122.4194),
             zoom: 12,
           ),
-          onMapCreated: (controller) {
-            controller.setMapStyle(mapStyle);
-          },
+          onMapCreated: (controller) {},
         ),
 
         //This is the content of the bottom sheet which will be extendable by dragging.
