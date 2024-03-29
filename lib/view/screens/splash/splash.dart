@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/common/snackbar.dart';
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
@@ -87,15 +88,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Image.asset(Images.splashImage),
-          ),
-        ],
+        body: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [primaryColor, primaryDark],
+        ),
       ),
-    );
+      child: Center(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100.sp),
+          child: Image.asset(Images.splashImage),
+        ),
+      ),
+    ));
   }
 }
