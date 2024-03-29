@@ -6,15 +6,13 @@ import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 class SettingTile extends StatelessWidget {
   final String text;
   final void Function()? onTap;
-  final String? image;
-  final Widget? icon;
+  final IconData icon;
   final Widget? trailing;
   const SettingTile(
       {super.key,
       required this.text,
       this.onTap,
-      this.image,
-      this.icon,
+      required this.icon,
       this.trailing});
 
   @override
@@ -33,7 +31,7 @@ class SettingTile extends StatelessWidget {
           ),
           child: Row(
             children: [
-              icon ?? Image.asset(image!),
+              Icon(icon, size: 30.sp, color: primaryColor),
               SizedBox(width: 10.sp),
               Expanded(
                 child:

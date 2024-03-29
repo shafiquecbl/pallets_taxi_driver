@@ -4,8 +4,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
-import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
-import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/profile/profile.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
@@ -39,7 +37,7 @@ class SettingScreen extends StatelessWidget {
           /// user profile list
           SettingTile(
             text: 'Status',
-            image: Images.status_icon,
+            icon: Iconsax.calendar5,
             trailing: Switch(
               value: true,
               onChanged: (value) {},
@@ -48,32 +46,31 @@ class SettingScreen extends StatelessWidget {
 
           SettingTile(
             text: 'Profile',
-            icon:
-                Icon(Iconsax.profile_circle5, color: primaryColor, size: 30.sp),
+            icon: Iconsax.profile_circle5,
             onTap: () => launchScreen(const ProfileScreen()),
           ),
           SettingTile(
             text: 'FAQ',
-            image: Images.faq_icon,
+            icon: Iconsax.messages_35,
             onTap: () {
               launchScreen(const ChatScreen());
             },
           ),
           SettingTile(
             text: 'Privacy Policy',
-            image: Images.privacy_icon,
+            icon: Iconsax.security_user,
             onTap: () {},
           ),
 
           SettingTile(
             text: 'About Us',
-            image: Images.about_icon,
+            icon: Iconsax.info_circle5,
             onTap: () {},
           ),
 
           SettingTile(
-            text: 'Customer Documentations',
-            image: Images.document_image,
+            text: 'Document Verification',
+            icon: Iconsax.document_text5,
             onTap: () {
               launchScreen(
                   const DocumentVerificationScreen(fromSettings: true));
@@ -81,8 +78,7 @@ class SettingScreen extends StatelessWidget {
           ),
           SettingTile(
             text: 'Sign Out',
-            image: Images.document_image,
-            icon: Icon(Iconsax.logout, color: Colors.red, size: 30.sp),
+            icon: Iconsax.logout,
             onTap: AuthController.find.logout,
           )
         ],

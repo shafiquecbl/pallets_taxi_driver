@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
+import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/address_widget.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/divider.dart';
@@ -63,7 +64,7 @@ class RideRequestSheet extends StatelessWidget {
           ),
           SizedBox(height: 20.sp),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(40.sp),
@@ -80,48 +81,63 @@ class RideRequestSheet extends StatelessWidget {
                   children: [
                     Text(
                       driverName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5.sp),
-                    Wrap(
-                      spacing: 15.sp,
-                      runSpacing: 2.sp,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                    SizedBox(height: 3.sp),
+                    Row(
                       children: [
-                        Wrap(
-                          spacing: 2.sp,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Icon(Iconsax.location5, size: 13.sp),
-                            Text(
-                              driveDistance,
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                          ],
+                        Icon(Iconsax.location5, size: 13.sp),
+                        Text(
+                          driveDistance,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
+                        SizedBox(width: 8.sp),
                         Text(
                           arrivalTime,
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          "● $noOfHelpers Helpers",
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          "● $sizeOfBox",
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                        Text(
-                          "● $sizeOgBlock",
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
                     ),
                   ],
                 ),
+              ),
+              SizedBox(width: 10.sp),
+              Column(
+                children: [
+                  Image.asset(Images.helperIcon, width: 22.sp),
+                  SizedBox(height: 3.sp),
+                  Text(
+                    "$noOfHelpers Helpers",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
+              ),
+              SizedBox(width: 8.sp),
+              Column(
+                children: [
+                  Image.asset(Images.sizeIcon, width: 22.sp),
+                  SizedBox(height: 3.sp),
+                  Text(
+                    sizeOfBox,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
+              ),
+              SizedBox(width: 8.sp),
+              Column(
+                children: [
+                  Image.asset(Images.weightIcon, width: 22.sp),
+                  SizedBox(height: 3.sp),
+                  Text(
+                    sizeOgBlock,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
               ),
             ],
           ),
