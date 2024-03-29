@@ -9,7 +9,7 @@ class RideRequest {
   double? latitude;
   double? longitude;
   OnRideRequest? onRideRequest;
-  Rider rider;
+  Rider? rider;
   dynamic payment;
 
   RideRequest({
@@ -37,8 +37,10 @@ class RideRequest {
         status: json["status"],
         latitude: json["latitude"],
         longitude: json["longitude"],
-        onRideRequest: OnRideRequest.fromJson(json["on_ride_request"]),
-        rider: Rider.fromJson(json["rider"]),
+        onRideRequest: json["on_ride_request"] == null
+            ? null
+            : OnRideRequest.fromJson(json["on_ride_request"]),
+        rider: json["rider"] == null ? null : Rider.fromJson(json["rider"]),
         payment: json["payment"],
       );
 
@@ -53,7 +55,7 @@ class RideRequest {
         "latitude": latitude,
         "longitude": longitude,
         "on_ride_request": onRideRequest?.toJson(),
-        "rider": rider.toJson(),
+        "rider": rider?.toJson(),
         "payment": payment,
       };
 }

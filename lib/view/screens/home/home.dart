@@ -6,6 +6,7 @@ import 'package:pallets_taxi_driver_pannel/common/text.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/enums.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/dashboard/dashboard_screen.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/current_tracking.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/request_list.dart';
@@ -29,32 +30,33 @@ class HomeScreen extends StatelessWidget {
           SizedBox(width: 10.sp),
         ],
       ),
-      body: ListView(
-        padding: pagePadding,
-        children: [
-          const StatsWIdget(),
+      body: RefreshIndicator(
+        onRefresh: () async => await DashboardScreen.loadData(),
+        child: ListView(
+          padding: pagePadding,
+          children: [
+            const StatsWIdget(),
 
-          /// Current Tracking
-          const CurrentTrackingContainer(
-            currentLocation: "Berlin",
-            currentOrderId: "#123456789",
-            status: "On the way",
-          ),
-
-          SizedBox(height: defautSpacing),
-
-          PageHeading(
-            title: "New Requests",
-            traling: TextButton(
-              onPressed: () {},
-              child: Text("View all",
-                  style: Theme.of(context).textTheme.bodyMedium!),
+            /// Current Tracking
+            const CurrentTrackingContainer(
+              currentLocation: "Berlin",
+              currentOrderId: "#123456789",
+              status: "On the way",
             ),
-          ),
 
-          /// Recent Shipping List
-          const NewRequestList(),
-        ],
+            PageHeading(
+              title: "New Requests",
+              traling: TextButton(
+                onPressed: () {},
+                child: Text("View all",
+                    style: Theme.of(context).textTheme.bodyMedium!),
+              ),
+            ),
+
+            /// Recent Shipping List
+            const NewRequestList(),
+          ],
+        ),
       ),
     );
   }

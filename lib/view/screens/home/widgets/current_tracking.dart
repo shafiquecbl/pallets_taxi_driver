@@ -24,12 +24,13 @@ class CurrentTrackingContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RideController>(builder: (con) {
-      RideRequest? ride = con.rideRequest;
+      OnRideRequest? ride = con.rideRequest?.onRideRequest;
       return ride == null
           ? const SizedBox()
           : GestureDetector(
               onTap: () => launchScreen(const RideScreen()),
               child: Container(
+                  margin: EdgeInsets.only(bottom: defautSpacing),
                   width: double.infinity,
                   padding: pagePadding,
                   decoration: BoxDecoration(
@@ -68,7 +69,7 @@ class CurrentTrackingContainer extends StatelessWidget {
                       ),
                       SizedBox(height: 2.sp),
                       Text(
-                        ride.onRideRequest!.endAddress,
+                        ride.endAddress,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
@@ -86,7 +87,7 @@ class CurrentTrackingContainer extends StatelessWidget {
                       ),
                       SizedBox(height: 2.sp),
                       Text(
-                        rideStatus(ride.onRideRequest!.status),
+                        rideStatus(ride.status),
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!
