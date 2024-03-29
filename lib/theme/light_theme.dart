@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 
-ThemeData light({Color color = primaryColor}) => ThemeData(
+ThemeData light({Color color = primaryLight}) => ThemeData(
       useMaterial3: true,
       fontFamily: 'Nunito',
       primaryColor: color,
