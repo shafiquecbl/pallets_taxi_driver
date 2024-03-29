@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/common/container.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
-import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 
 class AddressWidget extends StatelessWidget {
   final String destination;
@@ -30,16 +29,16 @@ class AddressWidget extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: 22.sp,
-                  height: 35.sp,
-                  alignment: Alignment.bottomCenter,
-                  padding: EdgeInsets.all(5.sp),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.sp),
-                    color: primaryColor,
-                  ),
-                  child: Image.asset(Images.ovel_icon),
-                ),
+                    width: 22.sp,
+                    height: 35.sp,
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.all(5.sp),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.sp),
+                      color: primaryColor,
+                    ),
+                    child: CircleAvatar(
+                        radius: 4.sp, backgroundColor: Colors.white)),
                 SizedBox(width: 10.sp),
                 Expanded(
                   child: Text(destination,
@@ -56,16 +55,16 @@ class AddressWidget extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: 22.sp,
-                  height: 35.sp,
-                  alignment: Alignment.topCenter,
-                  padding: EdgeInsets.all(5.sp),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.sp),
-                      color: Colors.white,
-                      border: Border.all(color: borderColor)),
-                  child: Image.asset(Images.oval_black_icon),
-                ),
+                    width: 22.sp,
+                    height: 35.sp,
+                    alignment: Alignment.topCenter,
+                    padding: EdgeInsets.all(5.sp),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.sp),
+                        color: Colors.white,
+                        border: Border.all(color: borderColor)),
+                    child: CircleAvatar(
+                        radius: 4.sp, backgroundColor: Colors.black54)),
                 SizedBox(width: 10.sp),
                 Expanded(
                   child: Text(location,

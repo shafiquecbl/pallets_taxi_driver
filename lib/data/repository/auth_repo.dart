@@ -41,7 +41,14 @@ class AuthRepo {
     return deviceToken ?? '';
   }
 
-  bool get isLoggedIn => sharedPreferences.containsKey(AppConstants.TOKEN);
+  bool get isLoggedIn {
+    bool value = sharedPreferences.containsKey(AppConstants.TOKEN);
+    if (value) {
+      String token = sharedPreferences.getString(AppConstants.TOKEN) ?? '';
+      saveUserToken(token);
+    }
+    return value;
+  }
 
   Future<bool> clearSharedData() async {
     await sharedPreferences.remove(AppConstants.TOKEN);

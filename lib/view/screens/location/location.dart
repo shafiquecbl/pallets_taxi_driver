@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
@@ -16,17 +15,12 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Future.delayed(
-        const Duration(seconds: 3),
-        () {
-          showLocationDialog(onTab: () {
-            launchScreen(const DashboardScreen());
-          });
-        },
-      );
-    });
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showLocationDialog(onTab: () {
+        launchScreen(const DashboardScreen());
+      });
+    });
   }
 
   @override

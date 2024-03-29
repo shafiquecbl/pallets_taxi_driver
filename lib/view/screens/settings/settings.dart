@@ -7,7 +7,7 @@ import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/account/profile.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/profile/profile.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';

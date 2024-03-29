@@ -35,13 +35,13 @@ class AppConstants {
   // Language
   static List<LanguageModel> languages = [
     LanguageModel(
-      imageUrl: Images.facebook_icon,
+      imageUrl: Images.facebook,
       languageName: 'English',
       countryCode: 'US',
       languageCode: 'en',
     ),
     LanguageModel(
-      imageUrl: Images.facebook_icon,
+      imageUrl: Images.facebook,
       languageName: 'Arabic',
       countryCode: 'SA',
       languageCode: 'ar',

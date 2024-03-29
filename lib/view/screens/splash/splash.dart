@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
     });
 
-    _splashController.initData();
+    _splashController.initSharedData();
     _route();
   }
 

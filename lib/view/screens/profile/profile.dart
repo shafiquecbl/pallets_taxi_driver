@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
 import 'package:pallets_taxi_driver_pannel/common/textfield.dart';
@@ -45,8 +46,7 @@ class ProfileScreen extends StatelessWidget {
                       radius: 18,
                       child: IconButton.filled(
                         onPressed: () {},
-                        icon: Image.asset(Images.replace_icon),
-                        color: primaryColor,
+                        icon: Icon(Iconsax.camera, size: 18.sp),
                       ),
                     ),
                   )

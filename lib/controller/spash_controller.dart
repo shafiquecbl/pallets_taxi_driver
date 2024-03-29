@@ -30,8 +30,4 @@ class SplashController extends GetxController implements GetxService {
   }
 
   Future<bool> initSharedData() => splashRepo.initSharedData();
-
-  initData() async {
-    await initSharedData();
-  }
 }
