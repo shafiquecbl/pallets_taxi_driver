@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
+import 'package:pallets_taxi_driver_pannel/common/textfield.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
-import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/widgets/chat_list.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -30,44 +31,39 @@ class ChatScreen extends StatelessWidget {
                     child: ChatList())),
 
             Container(
-              height: 60,
-              padding: const EdgeInsets.only(bottom: 15),
-              width: double.infinity,
+              height: 85.sp,
+              padding: EdgeInsets.symmetric(vertical: 15.sp),
+              decoration: BoxDecoration(
+                // top border
+                border: const Border(
+                  top: BorderSide(color: borderColor),
+                ),
+                color: Colors.grey[100],
+              ),
               child: Row(
                 children: [
-                  Expanded(
-                    flex: 2,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          Images.add_icon,
-                          fit: BoxFit.fill,
-                        )),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Iconsax.add_circle, color: primaryColor),
                   ),
                   Expanded(
-                    flex: 8,
                     child: TextField(
-                        decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: borderColor)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: borderColor)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: borderColor)),
-                      contentPadding: const EdgeInsets.all(18),
-                    )),
+                      decoration: InputDecoration(
+                        hintText: 'Type a message',
+                        enabledBorder: border(),
+                        border: border(),
+                        focusedBorder: border(),
+                        contentPadding: EdgeInsets.all(18.sp),
+                        fillColor: Colors.white,
+                        filled: true,
+                        hintStyle: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          Images.send_icon,
-                          fit: BoxFit.fill,
-                        )),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Iconsax.send_2, color: primaryColor),
                   )
                 ],
               ),

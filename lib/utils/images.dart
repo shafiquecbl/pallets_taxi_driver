@@ -19,10 +19,6 @@ class Images {
   static const String payment_successful =
       "assets/icons/payment_successful_icon.png";
 
-  /// chat screen
-  static const String send_icon = "assets/icons/send_icon.png";
-  static const String add_icon = "assets/icons/plus_icon.png";
-
   static const String splashImage = "assets/images/SplashImage.png";
   static const String homePageCarimage =
       "assets/images/home_page_car_image.png";
