@@ -64,7 +64,6 @@ class AuthController extends GetxController implements GetxService {
   Future<void> logout() async {
     authRepo.clearSharedData();
     ProfileController.find.userModel = null;
-    ProfileController.find.update();
     launchScreen(const WelcomeScreen(), pushAndRemove: true);
   }
 }
