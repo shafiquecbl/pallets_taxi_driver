@@ -120,7 +120,7 @@ class RequestWidget extends StatelessWidget {
               ],
             ),
             CustomDivider(padding: 20.sp),
-            AddressWidget(destination: destination, location: location),
+            AddressWidget(end: destination, start: location),
             CustomDivider(padding: 20.sp),
             Row(
               children: [

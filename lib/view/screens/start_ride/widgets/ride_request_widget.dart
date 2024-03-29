@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/ride_request.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
@@ -12,31 +13,19 @@ import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
 
 class RideRequestSheet extends StatelessWidget {
-  final String driverName;
-  final String driverImage;
-  final String driveDistance;
-  final String arrivalTime;
-  final String totalPayment;
   final String noOfHelpers;
-  final String destination;
-  final String location;
   final String sizeOfBox;
   final String sizeOgBlock;
   final Function()? onAction;
   final bool endRide;
+  final OnRideRequest data;
   const RideRequestSheet(
-      {required this.driverName,
-      required this.driverImage,
-      required this.driveDistance,
-      required this.arrivalTime,
-      required this.totalPayment,
-      required this.noOfHelpers,
-      required this.destination,
-      required this.location,
+      {required this.noOfHelpers,
       required this.sizeOfBox,
       required this.sizeOgBlock,
       this.onAction,
       this.endRide = false,
+      required this.data,
       super.key});
 
   @override
@@ -71,7 +60,7 @@ class RideRequestSheet extends StatelessWidget {
                 child: CustomNetworkImage(
                   height: 55,
                   width: 55,
-                  url: driverImage,
+                  url: data.riderProfileImage,
                 ),
               ),
               SizedBox(width: 10.sp),
@@ -80,7 +69,7 @@ class RideRequestSheet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      driverName,
+                      data.riderName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -93,12 +82,12 @@ class RideRequestSheet extends StatelessWidget {
                       children: [
                         Icon(Iconsax.location5, size: 13.sp),
                         Text(
-                          driveDistance,
+                          '800 m',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         SizedBox(width: 8.sp),
                         Text(
-                          arrivalTime,
+                          '(5 min)',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
@@ -148,8 +137,8 @@ class RideRequestSheet extends StatelessWidget {
             children: [
               Expanded(
                 child: AddressWidget(
-                  destination: destination,
-                  location: location,
+                  end: data.endAddress,
+                  start: data.startAddress,
                   small: true,
                 ),
               ),
@@ -182,7 +171,7 @@ class RideRequestSheet extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "Rs. $totalPayment",
+                "Rs. ${data.totalAmount}",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],

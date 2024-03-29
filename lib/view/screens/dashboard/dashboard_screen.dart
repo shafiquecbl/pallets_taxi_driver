@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/ride_controller.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/earnings/earnings.dart';
@@ -12,6 +13,10 @@ import 'package:pallets_taxi_driver_pannel/view/screens/settings/settings.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  static loadData() async {
+    await RideController.find.getCurrentRideRequest();
+  }
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -24,6 +29,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const HistoryScreen(),
     const SettingScreen(),
   ];
+
+  @override
+  void initState() {
+    DashboardScreen.loadData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<DashboardController>(builder: (con) {

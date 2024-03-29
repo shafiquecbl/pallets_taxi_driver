@@ -4,23 +4,28 @@ import 'package:pallets_taxi_driver_pannel/data/model/language.dart';
 import 'images.dart';
 
 class AppConstants {
+  static const String API_KEY = 'AIzaSyDAyle7Qn-EJAhmKS8Z0wrOeakbMVejCeA';
   static const String APP_NAME = 'Umash';
-  static const String BASE_URL = 'https://pallettaxi.hostdonor.com';
+  static const String BASE_URL = 'https://pallettaxi.hostdonor.com/api';
 
   // endpoints
-  static const String APP_SETTING = '/api/appsetting';
+  static const String APP_SETTING = '/appsetting';
 
   // document
-  static const String SUBMITTED_DOCUMENTS = '/api/driver-document-list';
-  static const String SUBMIT_DOCUMENTS = '/api/driver-document-save';
+  static const String SUBMITTED_DOCUMENTS = '/driver-document-list';
+  static const String SUBMIT_DOCUMENTS = '/driver-document-save';
 
   // auth
-  static const String REGISTER_URI = '/api/driver-register';
-  static const String LOGIN_URI = '/api/login';
-  static const String TOKEN_URI = '/api/customer/cm-firebase-token';
+  static const String REGISTER_URI = '/driver-register';
+  static const String LOGIN_URI = '/login';
+  static const String TOKEN_URI = '/customer/cm-firebase-token';
 
   // profile
-  static const String PROFILE_URI = '/api/user-detail';
+  static const String PROFILE_URI = '/user-detail';
+  static const String UPDATE_PROFILE_URI = '/update-profile';
+
+  // ride
+  static const String CURRENT_RIDE_REQUEST = '/current-riderequest';
 
   // Shared Key
   static const String THEME = 'theme';

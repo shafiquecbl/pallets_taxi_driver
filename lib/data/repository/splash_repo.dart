@@ -26,4 +26,7 @@ class SplashRepo {
 
     return Future.value(true);
   }
+
+  Future<void> removeSharedData() async =>
+      await sharedPreferences.remove(AppConstants.TOKEN);
 }

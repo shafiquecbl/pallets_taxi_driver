@@ -4,13 +4,16 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:pallets_taxi_driver_pannel/common/snackbar.dart';
+import 'package:pallets_taxi_driver_pannel/controller/spash_controller.dart';
 import 'package:pallets_taxi_driver_pannel/data/model/response/error.dart';
+import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/app_constants.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/welcome/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient extends GetxService {
@@ -228,8 +231,8 @@ class ApiClient extends GetxService {
   handleError(Map<String, dynamic> body, int statusCode) {
     String message = body['message'];
     if (statusCode == 401 && message == 'Invalid credentials.') {
-      // SplashController.find.removeSharedData();
-      // launchScreen(const LoginScreen(), pushAndRemove: true);
+      SplashController.find.removeSharedData();
+      launchScreen(const WelcomeScreen(), pushAndRemove: true);
     }
     dismiss();
     showToast(message);
@@ -240,7 +243,8 @@ class ApiClient extends GetxService {
     if (e is SocketException) {
       showToast('Please check your internet connection');
     } else {
-      log("Error Url: $url,\nError:${e.toString()}");
+      log("Error Url: $url,\n");
+      log(e.toString());
       showToast('Something went wrong');
     }
   }

@@ -7,7 +7,6 @@ import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/enums.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/start_ride/start_ride.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/current_tracking.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/home/widgets/request_list.dart';
 import 'widgets/stats_widget.dart';
@@ -36,13 +35,10 @@ class HomeScreen extends StatelessWidget {
           const StatsWIdget(),
 
           /// Current Tracking
-          CurrentTrackingContainer(
+          const CurrentTrackingContainer(
             currentLocation: "Berlin",
             currentOrderId: "#123456789",
             status: "On the way",
-            onTap: () {
-              launchScreen(const StartRideScreen());
-            },
           ),
 
           SizedBox(height: defautSpacing),

@@ -4,14 +4,11 @@ import 'package:pallets_taxi_driver_pannel/common/container.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 
 class AddressWidget extends StatelessWidget {
-  final String destination;
-  final String location;
+  final String start;
+  final String end;
   final bool small;
   const AddressWidget(
-      {super.key,
-      required this.destination,
-      required this.location,
-      this.small = false});
+      {super.key, required this.end, required this.start, this.small = false});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +38,7 @@ class AddressWidget extends StatelessWidget {
                         radius: 4.sp, backgroundColor: Colors.white)),
                 SizedBox(width: 10.sp),
                 Expanded(
-                  child: Text(destination,
+                  child: Text(start,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -67,7 +64,7 @@ class AddressWidget extends StatelessWidget {
                         radius: 4.sp, backgroundColor: Colors.black54)),
                 SizedBox(width: 10.sp),
                 Expanded(
-                  child: Text(location,
+                  child: Text(end,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)

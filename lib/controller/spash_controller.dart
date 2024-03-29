@@ -30,4 +30,6 @@ class SplashController extends GetxController implements GetxService {
   }
 
   Future<bool> initSharedData() => splashRepo.initSharedData();
+
+  Future<void> removeSharedData() => splashRepo.removeSharedData();
 }

@@ -23,4 +23,6 @@ class Images {
   static const String homePageCarimage =
       "assets/images/home_page_car_image.png";
   static const String locationImage = "assets/images/Location_image.png";
+
+  static const String userMarker = "assets/images/user_marker.png";
 }

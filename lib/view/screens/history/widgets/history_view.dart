@@ -83,7 +83,7 @@ class HistoryWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20.sp),
-            child: AddressWidget(destination: destination, location: location),
+            child: AddressWidget(end: destination, start: location),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
