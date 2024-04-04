@@ -195,8 +195,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         commercialAuto: _isComercialAuto,
       );
       AuthController.find.registration(model).then((value) {
-        showToast('Registration Successfull');
-        launchScreen(const DocumentVerificationScreen(), pushAndRemove: true);
+        if (value.isSuccess) {
+          showToast('Registration Successfull');
+          launchScreen(const DocumentVerificationScreen(), pushAndRemove: true);
+        }
       });
     }
   }

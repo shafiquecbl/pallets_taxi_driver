@@ -28,6 +28,9 @@ dependencies:
   flutter_screenutil: ^5.9.0
   image_picker: ^1.0.7
 
+  # MQTT
+  mqtt_client: ^10.2.0
+
    # Connectivity
   connectivity_plus: 
     

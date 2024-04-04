@@ -100,13 +100,10 @@ class CurrentTrackingContainer extends StatelessWidget {
   }
 
   String rideStatus(String status) {
-    switch (status) {
-      case 'new_ride_requested':
-        return 'New Ride Requested';
-      case '1':
-        return 'Upcomming';
-      default:
-        return 'Completed';
+    if (status.contains('_')) {
+      return status.split('_').map((e) => e.capitalizeFirst).join(' ');
+    } else {
+      return status.capitalizeFirst!;
     }
   }
 }

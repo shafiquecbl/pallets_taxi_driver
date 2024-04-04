@@ -28,7 +28,7 @@ class UserModel {
     this.isDocumentRequired = false,
     this.image = '',
     this.token = '',
-    this.status = 'pending',
+    required this.status,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -39,8 +39,12 @@ class UserModel {
       phoneNumber: json['contact_number'],
       dotMc: false,
       commercialAuto: false,
-      latitude: json['latitude'],
-      longitude: json['longitude'],
+      latitude: json['latitude'] != null
+          ? double.parse(json['latitude'].toString())
+          : json['latitude'],
+      longitude: json['longitude'] != null
+          ? double.parse(json['longitude'].toString())
+          : json['longitude'],
       isOnline: json['is_online'] == 1 ? true : false,
       isVerifiedDriver: json['is_verified_driver'] == 1 ? true : false,
       isDocumentRequired: json['is_document_required'] == 1 ? true : false,

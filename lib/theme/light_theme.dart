@@ -66,7 +66,6 @@ ThemeData light({Color color = primaryLight}) => ThemeData(
           ),
           bodyMedium: TextStyle(
             fontSize: 14.sp,
-            color: hintColor,
             fontFamily: 'Poppins',
           ),
           bodySmall: TextStyle(

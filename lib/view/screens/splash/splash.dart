@@ -10,9 +10,6 @@ import 'package:pallets_taxi_driver_pannel/data/model/response/user_model.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/dashboard/dashboard_screen.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/waiting_screen/waiting_screen.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/welcome/welcome.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -49,11 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
         isNotConnected ? 'No Connection' : 'Connected',
         success: !isNotConnected,
       );
-      if (!isNotConnected) {
-        _route();
-      }
     });
-
     _splashController.initSharedData();
     _route();
   }
@@ -66,16 +59,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Timer(const Duration(seconds: 1), () async {
             if (authController.isLoggedIn) {
               UserModel? user = await ProfileController.find.getProfile();
-              if (user != null && user.isDocumentRequired) {
-                launchScreen(const DocumentVerificationScreen(),
-                    pushAndRemove: true);
-              } else if (user != null &&
-                  user.isVerifiedDriver == false &&
-                  user.status == 'pending') {
-                launchScreen(const WaitingScreen(), pushAndRemove: true);
-              } else {
-                launchScreen(const DashboardScreen(), pushAndRemove: true);
-              }
+              goToDashboard(user);
             } else {
               launchScreen(const WelcomeScreen(), pushAndRemove: true);
             }

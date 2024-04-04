@@ -27,6 +27,8 @@ class ExpandableBottomSheet extends StatefulWidget {
 
   final bool isDraggable;
 
+  final bool initialExpand;
+
   ///
   const ExpandableBottomSheet({
     Key? key,
@@ -43,6 +45,7 @@ class ExpandableBottomSheet extends StatefulWidget {
     this.onIsContractedCallback,
     this.enableToggle = false,
     this.isDraggable = true,
+    this.initialExpand = false,
   })  : assert(persistentContentHeight >= 0),
         super(key: key);
 
@@ -107,7 +110,9 @@ class ExpandableBottomSheetState extends State<ExpandableBottomSheet>
     _controller.addStatusListener(_handleAnimationStatusUpdate);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _afterUpdateWidgetBuild(true);
-      expand();
+      if (widget.initialExpand) {
+        expand();
+      }
     });
   }
 

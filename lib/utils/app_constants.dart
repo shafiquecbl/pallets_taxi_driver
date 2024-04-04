@@ -5,7 +5,7 @@ import 'images.dart';
 
 class AppConstants {
   static const String API_KEY = 'AIzaSyDAyle7Qn-EJAhmKS8Z0wrOeakbMVejCeA';
-  static const String APP_NAME = 'Umash';
+  static const String APP_NAME = 'PalletTaxi';
   static const String BASE_URL = 'https://pallettaxi.hostdonor.com/api';
 
   // endpoints
@@ -26,6 +26,11 @@ class AppConstants {
 
   // ride
   static const String CURRENT_RIDE_REQUEST = '/current-riderequest';
+  static const String RIDE_REQUEST_RESPONSE = '/riderequest-respond';
+  static const String RIDE_REQUEST_UPDATE = '/riderequest-update';
+
+  // location
+  static const String UPDATE_DRIVER_LOCATION = '/update-user-status';
 
   // Shared Key
   static const String THEME = 'theme';

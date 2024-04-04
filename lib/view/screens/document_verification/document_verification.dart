@@ -62,7 +62,7 @@ class _DocumentVerificationScreenState
                 ],
               );
       }),
-      bottomNavigationBar: !widget.fromSettings
+      bottomNavigationBar: widget.fromSettings
           ? const SizedBox()
           : Padding(
               padding: pagePadding,

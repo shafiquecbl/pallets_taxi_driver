@@ -2,7 +2,9 @@ import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/document_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/history_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/location_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/request_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/ride_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/spash_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/theme_controller.dart';
@@ -10,10 +12,10 @@ import 'package:pallets_taxi_driver_pannel/data/api/api_client.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/auth_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/document_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/history_repo.dart';
+import 'package:pallets_taxi_driver_pannel/data/repository/location_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/profile_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/ride_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/splash_repo.dart';
-import 'package:pallets_taxi_driver_pannel/helper/network_manager.dart';
 import 'package:pallets_taxi_driver_pannel/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
@@ -27,19 +29,15 @@ Future<void> init() async {
 
   // Repository
 
-  Get.put(NetworkManager());
   Get.lazyPut(
       () => SplashRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
   Get.lazyPut(
       () => AuthRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-  Get.lazyPut(
-      () => ProfileRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-  Get.lazyPut(
-      () => DocumentRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-  Get.lazyPut(
-      () => HistoryRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
-  Get.lazyPut(
-      () => RideRepo(sharedPreferences: Get.find(), apiClient: Get.find()));
+  Get.lazyPut(() => ProfileRepo(apiClient: Get.find()));
+  Get.lazyPut(() => DocumentRepo(apiClient: Get.find()));
+  Get.lazyPut(() => HistoryRepo(apiClient: Get.find()));
+  Get.lazyPut(() => RideRepo(apiClient: Get.find()));
+  Get.lazyPut(() => LocationRepo(apiClient: Get.find()));
 
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
@@ -50,4 +48,6 @@ Future<void> init() async {
   Get.lazyPut(() => DocumentController(documentRepo: Get.find()));
   Get.lazyPut(() => HistoryController(historyRepo: Get.find()));
   Get.lazyPut(() => RideController(rideRepo: Get.find()));
+  Get.lazyPut(() => LocationController(locationRepo: Get.find()));
+  Get.lazyPut(() => RequestsController(rideRepo: Get.find()));
 }

@@ -2,31 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
+import 'package:pallets_taxi_driver_pannel/common/text.dart';
+import 'package:pallets_taxi_driver_pannel/controller/ride_controller.dart';
 import 'package:pallets_taxi_driver_pannel/data/model/response/ride_request.dart';
+import 'package:pallets_taxi_driver_pannel/helper/date_converter.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
+import 'package:pallets_taxi_driver_pannel/helper/price_converter.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/address_widget.dart';
+import 'package:pallets_taxi_driver_pannel/view/base/confirmation_dialog.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/divider.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
+import 'otp_dialog.dart';
 
 class RideRequestSheet extends StatelessWidget {
-  final String noOfHelpers;
-  final String sizeOfBox;
-  final String sizeOgBlock;
-  final Function()? onAction;
-  final bool endRide;
-  final OnRideRequest data;
-  const RideRequestSheet(
-      {required this.noOfHelpers,
-      required this.sizeOfBox,
-      required this.sizeOgBlock,
-      this.onAction,
-      this.endRide = false,
-      required this.data,
-      super.key});
+  final OnRideRequest ride;
+  const RideRequestSheet({required this.ride, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +56,7 @@ class RideRequestSheet extends StatelessWidget {
                 child: CustomNetworkImage(
                   height: 55,
                   width: 55,
-                  url: data.riderProfileImage,
+                  url: ride.riderProfileImage,
                 ),
               ),
               SizedBox(width: 10.sp),
@@ -69,7 +65,7 @@ class RideRequestSheet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      data.riderName,
+                      ride.riderName ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)
@@ -95,68 +91,14 @@ class RideRequestSheet extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(width: 10.sp),
-              Column(
-                children: [
-                  Image.asset(Images.helperIcon, width: 22.sp),
-                  SizedBox(height: 3.sp),
-                  Text(
-                    "$noOfHelpers Helpers",
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ],
-              ),
-              SizedBox(width: 8.sp),
-              Column(
-                children: [
-                  Image.asset(Images.sizeIcon, width: 22.sp),
-                  SizedBox(height: 3.sp),
-                  Text(
-                    sizeOfBox,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ],
-              ),
-              SizedBox(width: 8.sp),
-              Column(
-                children: [
-                  Image.asset(Images.weightIcon, width: 22.sp),
-                  SizedBox(height: 3.sp),
-                  Text(
-                    sizeOgBlock,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ],
-              ),
             ],
           ),
 
           CustomDivider(padding: 20.sp),
-
-          Row(
-            children: [
-              Expanded(
-                child: AddressWidget(
-                  end: data.endAddress,
-                  start: data.startAddress,
-                  small: true,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: Column(
-                  children: [
-                    const Icon(Icons.info_outline),
-                    SizedBox(height: 3.sp),
-                    Text("Instruction",
-                        style: Theme.of(context).textTheme.bodySmall)
-                  ],
-                ),
-                padding: EdgeInsets.zero,
-                visualDensity:
-                    const VisualDensity(horizontal: -4, vertical: -4),
-              ),
-            ],
+          AddressWidget(
+            end: ride.endAddress,
+            start: ride.startAddress,
+            small: true,
           ),
           CustomDivider(padding: 20.sp),
 
@@ -171,25 +113,25 @@ class RideRequestSheet extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "Rs. ${data.totalAmount}",
+                PriceConverter.convertPrice(ride.totalAmount.toDouble()),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ],
           ),
 
-          SizedBox(height: 30.sp),
+          SizedBox(height: 20.sp),
 
           ///
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (endRide) ...[
-                CustomCircledIconButton(
-                  icon: Icons.phone,
-                  onTap: () {},
-                ),
-                SizedBox(width: 10.sp),
-              ],
+              CustomCircledIconButton(
+                icon: Icons.phone,
+                onTap: () {
+                  launchUrlString('tel:${ride.riderContactNumber}');
+                },
+              ),
+              SizedBox(width: 10.sp),
               CustomCircledIconButton(
                 icon: Iconsax.message5,
                 onTap: () => launchScreen(const ChatScreen()),
@@ -197,17 +139,115 @@ class RideRequestSheet extends StatelessWidget {
               SizedBox(width: 15.sp),
               Expanded(
                 child: PrimaryButton(
-                  text: endRide ? "End Ride" : "Start Ride",
-                  onPressed: () {
-                    onAction?.call();
-                  },
+                  text: ride.status == 'accepted'
+                      ? "Start Ride"
+                      : ride.status == 'arriving'
+                          ? "Arrived"
+                          : ride.status == 'arrived'
+                              ? "Start Ride"
+                              : "End Ride",
+                  onPressed: _updateStatus,
                 ),
               ),
             ],
           ),
+          // info (helpers, size, weight)
+          const PageHeading(title: 'Info', topPadding: 30, bottomPadding: 10),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  Image.asset(Images.helperIcon, width: 30.sp),
+                  SizedBox(height: 5.sp),
+                  Text(
+                    "${ride.helpers} Helpers",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              SizedBox(width: 30.sp),
+              Column(
+                children: [
+                  Image.asset(Images.sizeIcon, width: 30.sp),
+                  SizedBox(height: 5.sp),
+                  Text(
+                    ride.dimensions,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              SizedBox(width: 30.sp),
+              Column(
+                children: [
+                  Image.asset(Images.weightIcon, width: 30.sp),
+                  SizedBox(height: 5.sp),
+                  Text(
+                    ride.weight,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          // Duration
+          const PageHeading(
+              title: 'Duration', topPadding: 30, bottomPadding: 10),
+          Text(
+            "${DateConverter.formatDate(ride.startDate)}  -  ${DateConverter.formatDate(ride.endDate)}",
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+
+          // Equipment
+          const PageHeading(
+              title: 'Equipment', topPadding: 30, bottomPadding: 10),
+          Text(
+            ride.equipments,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ],
       ),
     );
+  }
+
+  _updateStatus() {
+    String title = '';
+    String subtitle = '';
+    String actionText = '';
+    String status = '';
+    if (ride.status == 'accepted') {
+      title = 'Start Ride';
+      subtitle = 'Are you sure you want to start the ride?';
+      actionText = 'Start Ride';
+      status = 'arriving';
+    } else if (ride.status == 'arriving') {
+      title = 'Arrived';
+      subtitle = 'Are you sure you have arrived at the location?';
+      actionText = 'Arrived';
+      status = 'arrived';
+    } else {
+      title = 'End Ride';
+      subtitle = 'Are you sure you want to end the ride?';
+      actionText = 'End Ride';
+      status = 'completed';
+    }
+    if (ride.status == 'arrived') {
+      showOTPDialog(onAccept: (otp) {
+        pop();
+        RideController.find.rideRequestUpdate('in_progress', otp: otp);
+      });
+    } else {
+      showConfirmationDialog(
+        title: title,
+        subtitle: subtitle,
+        actionText: actionText,
+        onAccept: () {
+          pop();
+          RideController.find.rideRequestUpdate(status);
+        },
+      );
+    }
   }
 }
 
@@ -238,31 +278,3 @@ class CustomCircledIconButton extends StatelessWidget {
     );
   }
 }
-
-// Column(
-//                       children: [
-//                         Image.asset(Images.labourar_icon, width: 24.sp),
-//                         Text(
-//                           "$noOfHelpers Helpers",
-//                           style: Theme.of(context).textTheme.labelSmall,
-//                         )
-//                       ],
-//                     ),
-//                     SizedBox(width: 10.sp),
-//                     Column(
-//                       children: [
-//                         Image.asset(Images.box_image, width: 24.sp),
-//                         Text(
-//                           sizeOfBox,
-//                           style: Theme.of(context).textTheme.labelSmall,
-//                         )
-//                       ],
-//                     ),
-//                     SizedBox(width: 10.sp),
-//                     Column(
-//                       children: [
-//                         Image.asset(Images.box_icon, width: 24.sp),
-//                         Text(sizeOgBlock,
-//                             style: Theme.of(context).textTheme.labelSmall)
-//                       ],
-//                     ),

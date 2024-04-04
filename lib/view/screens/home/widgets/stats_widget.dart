@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
+import 'package:pallets_taxi_driver_pannel/helper/price_converter.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
@@ -17,7 +18,7 @@ class StatsWIdget extends StatelessWidget {
           Expanded(
             flex: 5,
             child: TotalEarningButton(
-              totalEarning: "\$ 10.00",
+              totalEarning: PriceConverter.convertPrice(10),
               onTap: () => DashboardController.find.selectedIndex = 1,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pallets_taxi_driver_pannel/controller/request_controller.dart';
 import 'package:pallets_taxi_driver_pannel/data/model/response/user_model.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/dashboard/dashboard_screen.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
@@ -11,10 +12,10 @@ goToDashboard(UserModel? user) {
   if (user != null && user.isDocumentRequired) {
     launchScreen(const DocumentVerificationScreen(), pushAndRemove: true);
   } else if (user != null &&
-      user.isVerifiedDriver == false &&
-      user.status == 'pending') {
+      (user.isVerifiedDriver == false || user.status != 'active')) {
     launchScreen(const WaitingScreen(), pushAndRemove: true);
   } else {
+    RequestsController.find.mqttForDriver();
     launchScreen(const DashboardScreen(), pushAndRemove: true);
   }
 }

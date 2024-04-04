@@ -35,8 +35,12 @@ class RideRequest {
         userType: json["user_type"],
         profileImage: json["profile_image"],
         status: json["status"],
-        latitude: json["latitude"],
-        longitude: json["longitude"],
+        latitude: json['latitude'] != null
+            ? double.parse(json['latitude'].toString())
+            : json['latitude'],
+        longitude: json['longitude'] != null
+            ? double.parse(json['longitude'].toString())
+            : json['longitude'],
         onRideRequest: json["on_ride_request"] == null
             ? null
             : OnRideRequest.fromJson(json["on_ride_request"]),
@@ -64,22 +68,20 @@ class OnRideRequest {
   int id;
   int riderId;
   int serviceId;
-  DateTime datetime;
   int isSchedule;
-  int rideAttempt;
-  int? otp;
+  String? otp;
   num totalAmount;
-  num subtotal;
-  num extraChargesAmount;
-  int driverId;
-  String driverName;
-  String riderName;
-  String driverEmail;
-  String riderEmail;
-  String driverContactNumber;
+  num? subtotal;
+  num? extraChargesAmount;
+  int? driverId;
+  String? driverName;
+  String? riderName;
+  String? driverEmail;
+  String? riderEmail;
+  String? driverContactNumber;
   String? riderContactNumber;
-  String driverProfileImage;
-  String riderProfileImage;
+  String? driverProfileImage;
+  String? riderProfileImage;
   double startLatitude;
   double startLongitude;
   String startAddress;
@@ -118,17 +120,22 @@ class OnRideRequest {
   int isDriverRated;
   DateTime createdAt;
   DateTime updatedAt;
-  int regionId;
   int isRideForOther;
   dynamic otherRiderData;
+  bool isUrgent;
+  DateTime startDate;
+  DateTime endDate;
+  String userNote;
+  String weight;
+  String dimensions;
+  String equipments;
+  int helpers;
 
   OnRideRequest({
     required this.id,
     required this.riderId,
     required this.serviceId,
-    required this.datetime,
     required this.isSchedule,
-    required this.rideAttempt,
     required this.otp,
     required this.totalAmount,
     required this.subtotal,
@@ -180,18 +187,23 @@ class OnRideRequest {
     required this.isDriverRated,
     required this.createdAt,
     required this.updatedAt,
-    required this.regionId,
     required this.isRideForOther,
     required this.otherRiderData,
+    required this.isUrgent,
+    required this.startDate,
+    required this.endDate,
+    required this.userNote,
+    required this.weight,
+    required this.dimensions,
+    required this.equipments,
+    required this.helpers,
   });
 
   factory OnRideRequest.fromJson(Map<String, dynamic> json) => OnRideRequest(
         id: json["id"],
         riderId: json["rider_id"],
         serviceId: json["service_id"],
-        datetime: DateTime.parse(json["datetime"]),
         isSchedule: json["is_schedule"],
-        rideAttempt: json["ride_attempt"],
         otp: json["otp"],
         totalAmount: json["total_amount"],
         subtotal: json["subtotal"],
@@ -246,18 +258,23 @@ class OnRideRequest {
         isDriverRated: json["is_driver_rated"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        regionId: json["region_id"],
         isRideForOther: json["is_ride_for_other"],
         otherRiderData: json["other_rider_data"],
+        isUrgent: json["is_urgent"] == 1 ? true : false,
+        startDate: DateTime.parse(json["start_date"]),
+        endDate: DateTime.parse(json["end_date"]),
+        userNote: json["user_note"] ?? '',
+        weight: json["weight"],
+        dimensions: json["dimensions"],
+        equipments: json["additional_equipments"],
+        helpers: int.parse(json["helper"].toString()),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "rider_id": riderId,
         "service_id": serviceId,
-        "datetime": datetime.toIso8601String(),
         "is_schedule": isSchedule,
-        "ride_attempt": rideAttempt,
         "otp": otp,
         "total_amount": totalAmount,
         "subtotal": subtotal,
@@ -309,9 +326,16 @@ class OnRideRequest {
         "is_driver_rated": isDriverRated,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "region_id": regionId,
         "is_ride_for_other": isRideForOther,
         "other_rider_data": otherRiderData,
+        "is_urgent": isUrgent,
+        "start_date": startDate.toIso8601String(),
+        "end_date": endDate.toIso8601String(),
+        "user_note": userNote,
+        "weight": weight,
+        "dimensions": dimensions,
+        "additional_equipments": equipments,
+        "helper": helpers,
       };
 }
 
@@ -322,27 +346,13 @@ class Rider {
   String displayName;
   String email;
   String username;
-  String status;
   String userType;
-  dynamic address;
-  dynamic contactNumber;
-  dynamic gender;
-  String profileImage;
-  dynamic loginType;
-  dynamic latitude;
-  dynamic longitude;
-  dynamic uid;
-  dynamic playerId;
-  int isOnline;
-  int isAvailable;
-  String timezone;
-  dynamic fcmToken;
-  dynamic userDetail;
-  DateTime lastNotificationSeen;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String? address;
+  String? contactNumber;
+  String? profileImage;
+  String? latitude;
+  String? longitude;
   int rating;
-  dynamic userBankAccount;
 
   Rider({
     required this.id,
@@ -351,27 +361,13 @@ class Rider {
     required this.displayName,
     required this.email,
     required this.username,
-    required this.status,
     required this.userType,
     required this.address,
     required this.contactNumber,
-    required this.gender,
     required this.profileImage,
-    required this.loginType,
     required this.latitude,
     required this.longitude,
-    required this.uid,
-    required this.playerId,
-    required this.isOnline,
-    required this.isAvailable,
-    required this.timezone,
-    required this.fcmToken,
-    required this.userDetail,
-    required this.lastNotificationSeen,
-    required this.createdAt,
-    required this.updatedAt,
     required this.rating,
-    required this.userBankAccount,
   });
 
   factory Rider.fromJson(Map<String, dynamic> json) => Rider(
@@ -381,27 +377,13 @@ class Rider {
         displayName: json["display_name"],
         email: json["email"],
         username: json["username"],
-        status: json["status"],
         userType: json["user_type"],
         address: json["address"],
         contactNumber: json["contact_number"],
-        gender: json["gender"],
         profileImage: json["profile_image"],
-        loginType: json["login_type"],
         latitude: json["latitude"],
         longitude: json["longitude"],
-        uid: json["uid"],
-        playerId: json["player_id"],
-        isOnline: json["is_online"],
-        isAvailable: json["is_available"],
-        timezone: json["timezone"],
-        fcmToken: json["fcm_token"],
-        userDetail: json["user_detail"],
-        lastNotificationSeen: DateTime.parse(json["last_notification_seen"]),
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
         rating: json["rating"],
-        userBankAccount: json["user_bank_account"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -411,26 +393,12 @@ class Rider {
         "display_name": displayName,
         "email": email,
         "username": username,
-        "status": status,
         "user_type": userType,
         "address": address,
         "contact_number": contactNumber,
-        "gender": gender,
         "profile_image": profileImage,
-        "login_type": loginType,
         "latitude": latitude,
         "longitude": longitude,
-        "uid": uid,
-        "player_id": playerId,
-        "is_online": isOnline,
-        "is_available": isAvailable,
-        "timezone": timezone,
-        "fcm_token": fcmToken,
-        "user_detail": userDetail,
-        "last_notification_seen": lastNotificationSeen.toIso8601String(),
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
         "rating": rating,
-        "user_bank_account": userBankAccount,
       };
 }

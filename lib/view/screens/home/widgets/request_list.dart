@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
-import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
+import 'package:pallets_taxi_driver_pannel/controller/request_controller.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/ride_request.dart';
+import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
+import 'package:pallets_taxi_driver_pannel/helper/price_converter.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/address_widget.dart';
+import 'package:pallets_taxi_driver_pannel/view/base/confirmation_dialog.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/divider.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 
@@ -14,33 +19,22 @@ class NewRequestList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: 5,
-      separatorBuilder: (context, index) => SizedBox(height: defautSpacing),
-      itemBuilder: (context, index) => const RequestWidget(
-        location: "Neemuch RD. Gopalbari, Bari Sad",
-        destination: "Neemuch RD. Gopalbari, Bari Sad",
-        date: "12-12-2022",
-        price: "Rs. 1000",
-      ),
-    );
+    return GetBuilder<RequestsController>(builder: (con) {
+      return ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: con.rideRequest.length,
+        separatorBuilder: (context, index) => SizedBox(height: defautSpacing),
+        itemBuilder: (context, index) =>
+            RequestWidget(ride: con.rideRequest[index]),
+      );
+    });
   }
 }
 
 class RequestWidget extends StatelessWidget {
-  final String location;
-  final String destination;
-  final String date;
-  final String price;
-  const RequestWidget({
-    super.key,
-    required this.location,
-    required this.destination,
-    required this.date,
-    required this.price,
-  });
+  final OnRideRequest ride;
+  const RequestWidget({super.key, required this.ride});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +67,7 @@ class RequestWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Frank",
+                        ride.riderName ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge
@@ -82,15 +76,11 @@ class RequestWidget extends StatelessWidget {
                       SizedBox(height: 2.sp),
                       Row(
                         children: [
-                          Icon(
-                            Iconsax.clock,
-                            color: primaryColor,
-                            size: 14.sp,
-                          ),
+                          Icon(Iconsax.location, size: 14.sp),
                           const SizedBox(
                             width: 5,
                           ),
-                          Text("15 min",
+                          Text("${ride.distance} Miles",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
@@ -100,27 +90,31 @@ class RequestWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Image.asset(Images.alarm_error_icon),
                 SizedBox(width: 10.sp),
-                Column(children: [
-                  Text(
-                    "\$ 20",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 2.sp),
-                  Text("2.4 km",
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    if (ride.isUrgent) ...[
+                      Image.asset(
+                        Images.alarm_error_icon,
+                        width: 24.sp,
+                        height: 24.sp,
+                      ),
+                      SizedBox(height: 2.sp),
+                    ],
+                    Text(
+                      PriceConverter.convertPrice(ride.totalAmount.toDouble()),
                       style: Theme.of(context)
                           .textTheme
-                          .bodySmall!
-                          .copyWith(color: Colors.black54))
-                ])
+                          .bodyLarge
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ],
             ),
             CustomDivider(padding: 20.sp),
-            AddressWidget(end: destination, start: location),
+            AddressWidget(end: ride.endAddress, start: ride.startAddress),
             CustomDivider(padding: 20.sp),
             Row(
               children: [
@@ -128,14 +122,36 @@ class RequestWidget extends StatelessWidget {
                     child: PrimaryOutlineButton(
                   text: "Decline",
                   radius: 32,
-                  onPressed: () {},
+                  onPressed: () {
+                    showConfirmationDialog(
+                        title: 'Decline Request',
+                        subtitle:
+                            'Are you sure you want to decline this request?',
+                        actionText: 'Decline',
+                        onAccept: () {
+                          pop();
+                          RequestsController.find
+                              .rideRequestResponse(ride.id, false);
+                        });
+                  },
                 )),
                 SizedBox(width: 10.sp),
                 Expanded(
                   child: PrimaryButton(
                     text: "Accept",
                     radius: 32,
-                    onPressed: () {},
+                    onPressed: () {
+                      showConfirmationDialog(
+                          title: 'Accept Request',
+                          subtitle:
+                              'Are you sure you want to accept this request?',
+                          actionText: 'Accept',
+                          onAccept: () {
+                            pop();
+                            RequestsController.find
+                                .rideRequestResponse(ride.id, true);
+                          });
+                    },
                   ),
                 ),
               ],

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/location_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/ride_controller.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
@@ -16,6 +17,9 @@ class DashboardScreen extends StatefulWidget {
 
   static loadData() async {
     await RideController.find.getCurrentRideRequest();
+    LocationController.find.getLocationStream((position) {
+      LocationController.find.updateDriverLocation(position);
+    });
   }
 
   @override
