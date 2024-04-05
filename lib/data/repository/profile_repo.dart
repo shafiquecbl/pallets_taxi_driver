@@ -14,6 +14,7 @@ class ProfileRepo {
       {required String name,
       required String phone,
       required String email,
+      String? fcmToken,
       XFile? image}) async {
     List<String> splitName = name.split(' ');
     String firstName = splitName.first;
@@ -24,6 +25,9 @@ class ProfileRepo {
       "email": email,
       "contact_number": phone,
     };
+    if (fcmToken != null) {
+      body['fcm_token'] = fcmToken;
+    }
     if (image != null) {
       return await apiClient.postMultipartData(
         AppConstants.UPDATE_PROFILE_URI,

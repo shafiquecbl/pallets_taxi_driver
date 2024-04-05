@@ -59,6 +59,14 @@ class _SplashScreenState extends State<SplashScreen> {
           Timer(const Duration(seconds: 1), () async {
             if (authController.isLoggedIn) {
               UserModel? user = await ProfileController.find.getProfile();
+              if (user != null) {
+                ProfileController.find.updateProfile(
+                  name: user.name,
+                  phone: user.phoneNumber,
+                  email: user.email,
+                  fcmToken: AuthController.find.deviceToken,
+                );
+              }
               goToDashboard(user);
             } else {
               launchScreen(const WelcomeScreen(), pushAndRemove: true);

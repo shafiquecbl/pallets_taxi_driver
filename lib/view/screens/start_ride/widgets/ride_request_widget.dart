@@ -101,7 +101,6 @@ class RideRequestSheet extends StatelessWidget {
             small: true,
           ),
           CustomDivider(padding: 20.sp),
-
           Row(
             children: [
               Text(

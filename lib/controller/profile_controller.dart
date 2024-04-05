@@ -41,10 +41,15 @@ class ProfileController extends GetxController implements GetxService {
       {required String name,
       required String phone,
       required String email,
+      String? fcmToken,
       XFile? file}) async {
     showLoading();
     http.Response? response = await profileRepo.updateProfile(
-        name: name, phone: phone, email: email, image: file);
+        name: name,
+        phone: phone,
+        email: email,
+        fcmToken: fcmToken,
+        image: file);
     if (response != null) {
       Map<String, dynamic> map = jsonDecode(response.body);
       userModel = UserModel.fromJson(map["data"]);

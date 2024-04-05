@@ -57,8 +57,9 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
-  Future<void> getToken() async {
+  Future<String> getToken() async {
     deviceToken = await authRepo.getDeviceToken();
+    return deviceToken!;
   }
 
   Future<void> logout() async {
