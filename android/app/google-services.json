@@ -1,48 +1,56 @@
 {
   "project_info": {
-    "project_number": "305241309976",
-    "project_id": "maps-flutter-59331",
-    "storage_bucket": "maps-flutter-59331.appspot.com"
+    "project_number": "1066394194657",
+    "project_id": "pallettaxidcodax",
+    "storage_bucket": "pallettaxidcodax.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:305241309976:android:7780474e57b5bb4fa0946d",
+        "mobilesdk_app_id": "1:1066394194657:android:12e5a4b5e6d4aa89161da0",
         "android_client_info": {
-          "package_name": "com.example.flutter_google_map_integration"
+          "package_name": "com.pallet.driver"
         }
       },
       "oauth_client": [
         {
-          "client_id": "305241309976-mjvtsr0j9qp5b453lkpuu5j19php4meb.apps.googleusercontent.com",
+          "client_id": "1066394194657-shrh81lqfqv242rcsp10a81u42np2c29.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.flutter_google_map_integration",
-            "certificate_hash": "2a1f4abdbabdb48e07b56343354160b331452cba"
+            "package_name": "com.pallet.driver",
+            "certificate_hash": "6701169ee3d77324b36edc8129c3998022861aae"
           }
         },
         {
-          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_id": "1066394194657-uim3lf6cad319unbvg4k6l485g0navvu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pallet.driver",
+            "certificate_hash": "5ca835f2c74626885836fdd599a807944e47839d"
+          }
+        },
+        {
+          "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+          "current_key": "AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_id": "1066394194657-bc63pgstaqe15bk6doldc63v1i03ephj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.flutterGoogleMapIntegration"
+                "bundle_id": "com.pallet.taxi"
               }
             }
           ]
@@ -51,142 +59,50 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:305241309976:android:fac98a7505caa904a0946d",
+        "mobilesdk_app_id": "1:1066394194657:android:7743878a93b7efe7161da0",
         "android_client_info": {
-          "package_name": "com.example.google_map"
+          "package_name": "com.pallet.taxi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
+          "client_id": "1066394194657-e43vnpd196mon6irf3hkd6bd3prjpsui.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pallet.taxi",
+            "certificate_hash": "5ca835f2c74626885836fdd599a807944e47839d"
+          }
+        },
+        {
+          "client_id": "1066394194657-gqc3lhe5m351j3uj8rvhacn6l0kmh1de.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pallet.taxi",
+            "certificate_hash": "6701169ee3d77324b36edc8129c3998022861aae"
+          }
+        },
+        {
+          "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
+          "current_key": "AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
+              "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
+              "client_id": "1066394194657-bc63pgstaqe15bk6doldc63v1i03ephj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.flutterGoogleMapIntegration"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:305241309976:android:fb27a75bc2e21788a0946d",
-        "android_client_info": {
-          "package_name": "com.example.map"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.flutterGoogleMapIntegration"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:305241309976:android:ca67ce0f09a362aca0946d",
-        "android_client_info": {
-          "package_name": "com.example.pallets_taxi"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.flutterGoogleMapIntegration"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:305241309976:android:5aaaa607f362c090a0946d",
-        "android_client_info": {
-          "package_name": "com.example.pallets_taxi_driver_pannel"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "305241309976-qmead93p3v1ovc0hlp0g46ahjlek5rqp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "305241309976-gn0frv3nedd3rranqcv3lqcqptvmdj4n.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "305241309976-05l4n2f1q37u5asssljn2qorb3vssp5s.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.flutterGoogleMapIntegration"
+                "bundle_id": "com.pallet.taxi"
               }
             }
           ]

@@ -4,7 +4,7 @@ import 'package:pallets_taxi_driver_pannel/data/model/language.dart';
 import 'images.dart';
 
 class AppConstants {
-  static const String API_KEY = 'AIzaSyDAyle7Qn-EJAhmKS8Z0wrOeakbMVejCeA';
+  static const String API_KEY = 'AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o';
   static const String APP_NAME = 'PalletTaxi';
   static const String BASE_URL = 'https://pallettaxi.hostdonor.com/api';
 
