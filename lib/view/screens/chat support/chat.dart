@@ -6,8 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
+import 'package:pallets_taxi_driver_pannel/common/network_image.dart';
+import 'package:pallets_taxi_driver_pannel/controller/ride_controller.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/ride_request.dart';
+import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/controller/chat_support_controller.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'widgets/chat_bubble.dart';
 
 class ChatSupportScreen extends StatefulWidget {
@@ -21,6 +27,7 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
   final TextEditingController messageController = TextEditingController();
   bool _isFirst = true;
   Timer? _timer;
+  OnRideRequest get ride => RideController.find.rideRequest!.onRideRequest!;
 
   @override
   void initState() {
@@ -47,6 +54,34 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: const CustomBackButton(),
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 20.sp,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40.sp),
+                child: CustomNetworkImage(url: ride.riderProfileImage),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Text(
+              ride.riderName ?? '',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          ],
+        ),
+        actions: [
+          OutlinedIconButton(
+            icon: Iconsax.call,
+            onTap: () => launchUrlString('tel:${ride.riderContactNumber}'),
+          ),
+          SizedBox(width: 10.sp),
+        ],
+      ),
       body: GetBuilder<ChatController>(
         builder: (con) {
           return Column(
@@ -61,13 +96,11 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         reverse: true,
                         itemBuilder: (context, index) {
-                          bool chatWithDriver =
-                              con.messageList![index].deliverymanId != null;
-                          bool isMe = con.messageList![index].isReply ?? false;
+                          bool isMe =
+                              con.messageList![index].deliverymanId == null;
 
                           return ChatBubble(
-                            chatWithDriver: chatWithDriver,
-                            isMe: chatWithDriver ? isMe : !isMe,
+                            isMe: !isMe,
                             message: con.messageList![index],
                           );
                         },
@@ -124,7 +157,7 @@ class _ChatSupportScreenState extends State<ChatSupportScreen> {
               Container(
                 padding: pagePadding,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
+                  color: reciveMessagebackColor.withOpacity(0.8),
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(20.sp)),
                 ),

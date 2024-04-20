@@ -52,15 +52,15 @@ class Messages {
     } catch (e) {
       conversationId = int.parse(json['conversation_id']);
     }
-    if (json['customer_id'] != null) {
-      customerId = json['customer_id'] != null
-          ? CustomerId.fromJson(json['customer_id'])
+    if (json['rider_id'] != null) {
+      customerId = json['rider_id'] != null
+          ? CustomerId.fromJson(json['rider_id'])
           : null;
     }
 
-    if (json['deliveryman_id'] != null) {
-      deliverymanId = json['deliveryman_id'] != null
-          ? DeliverymanId.fromJson(json['deliveryman_id'])
+    if (json['driver_id'] != null) {
+      deliverymanId = json['driver_id'] != null
+          ? DeliverymanId.fromJson(json['driver_id'])
           : null;
     }
     message = json['message'];
@@ -82,10 +82,10 @@ class Messages {
     data['id'] = id;
     data['conversation_id'] = conversationId;
     if (customerId != null) {
-      data['customer_id'] = customerId!.toJson();
+      data['rider_id'] = customerId!.toJson();
     }
     if (deliverymanId != null) {
-      data['deliveryman_id'] = deliverymanId!.toJson();
+      data['driver_id'] = deliverymanId!.toJson();
     }
     data['message'] = message;
     data['reply'] = reply;

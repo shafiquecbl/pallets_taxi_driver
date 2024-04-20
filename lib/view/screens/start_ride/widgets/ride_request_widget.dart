@@ -15,7 +15,7 @@ import 'package:pallets_taxi_driver_pannel/view/base/address_widget.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/confirmation_dialog.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/divider.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/chat%20support/chat.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/review/review.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'otp_dialog.dart';
@@ -133,7 +133,7 @@ class RideRequestSheet extends StatelessWidget {
               SizedBox(width: 10.sp),
               CustomCircledIconButton(
                 icon: Iconsax.message5,
-                onTap: () => launchScreen(const ChatScreen()),
+                onTap: () => launchScreen(const ChatSupportScreen()),
               ),
               SizedBox(width: 15.sp),
               Expanded(

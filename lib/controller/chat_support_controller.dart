@@ -42,8 +42,8 @@ class ChatController extends GetxController implements GetxService {
       _messageList = null;
       update();
     }
-    response =
-        await chatRepo.getMessage(1, RideController.find.rideRequest!.id);
+    response = await chatRepo.getMessage(
+        1, RideController.find.rideRequest!.onRideRequest!.id);
 
     if (response != null) {
       var data = jsonDecode(response.body);
@@ -85,7 +85,7 @@ class ChatController extends GetxController implements GetxService {
       }
     }
     response = await chatRepo.sendMessage(
-        message, images, RideController.find.rideRequest!.id);
+        message, images, RideController.find.rideRequest!.onRideRequest!.id);
 
     if (response != null) {
       getMessages(1, false);
