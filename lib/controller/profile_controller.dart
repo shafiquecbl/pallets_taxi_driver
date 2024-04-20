@@ -53,7 +53,9 @@ class ProfileController extends GetxController implements GetxService {
     if (response != null) {
       Map<String, dynamic> map = jsonDecode(response.body);
       userModel = UserModel.fromJson(map["data"]);
-      showToast('Profile Updated Successfully');
+      if (fcmToken == null) {
+        showToast('Profile Updated Successfully');
+      }
     }
   }
 }

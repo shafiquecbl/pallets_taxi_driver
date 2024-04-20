@@ -16,8 +16,8 @@ import 'package:pallets_taxi_driver_pannel/view/base/confirmation_dialog.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/divider.dart';
 import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/review/review.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
 import 'otp_dialog.dart';
 
 class RideRequestSheet extends StatelessWidget {
@@ -243,7 +243,16 @@ class RideRequestSheet extends StatelessWidget {
         actionText: actionText,
         onAccept: () {
           pop();
-          RideController.find.rideRequestUpdate(status);
+          if (status == 'completed') {
+            RideController.find.completeRideRequest().then((value) {
+              if (value.isSuccess) {
+                pop();
+                launchScreen(RatingScreen(ride: ride));
+              }
+            });
+          } else {
+            RideController.find.rideRequestUpdate(status);
+          }
         },
       );
     }

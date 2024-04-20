@@ -6,7 +6,7 @@ import 'images.dart';
 class AppConstants {
   static const String API_KEY = 'AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o';
   static const String APP_NAME = 'PalletTaxi';
-  static const String BASE_URL = 'https://pallettaxi.hostdonor.com/api';
+  static const String BASE_URL = 'https://pallettaxi.dcodax.net/api';
 
   // endpoints
   static const String APP_SETTING = '/appsetting';
@@ -27,7 +27,15 @@ class AppConstants {
   // ride
   static const String CURRENT_RIDE_REQUEST = '/current-riderequest';
   static const String RIDE_REQUEST_RESPONSE = '/riderequest-respond';
+  static const String RIDE_REQUEST_LIST = '/riderequest-list';
   static const String RIDE_REQUEST_UPDATE = '/riderequest-update';
+  static const String SAVE_RIDE_RATING = '/save-ride-rating';
+  static const String COMPLETE_RIDE_REQUEST = '/complete-riderequest';
+  static const String SAVE_PAYMENT = '/save-payment';
+
+  // message
+  static const String MESSAGE_URI = '/message/get';
+  static const String SEND_MESSAGE_URI = '/message/send/driver';
 
   // location
   static const String UPDATE_DRIVER_LOCATION = '/update-user-status';

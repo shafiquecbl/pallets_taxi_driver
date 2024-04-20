@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'divider.dart';
@@ -51,15 +52,18 @@ class ConfirmationDialog extends StatelessWidget {
           children: [
             Text(
               title.tr,
-              style: Theme.of(context).textTheme.displaySmall,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
-            const CustomDivider(padding: 20),
+            CustomDivider(padding: 20.sp),
             Text(
               subtitle.tr,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 24.sp),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

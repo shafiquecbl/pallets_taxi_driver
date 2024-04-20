@@ -10,7 +10,7 @@ class RideRequest {
   double? longitude;
   OnRideRequest? onRideRequest;
   Rider? rider;
-  dynamic payment;
+  Payment? payment;
 
   RideRequest({
     required this.id,
@@ -45,7 +45,8 @@ class RideRequest {
             ? null
             : OnRideRequest.fromJson(json["on_ride_request"]),
         rider: json["rider"] == null ? null : Rider.fromJson(json["rider"]),
-        payment: json["payment"],
+        payment:
+            json["payment"] == null ? null : Payment.fromJson(json["payment"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -60,7 +61,7 @@ class RideRequest {
         "longitude": longitude,
         "on_ride_request": onRideRequest?.toJson(),
         "rider": rider?.toJson(),
-        "payment": payment,
+        "payment": payment?.toJson(),
       };
 }
 
@@ -352,7 +353,7 @@ class Rider {
   String? profileImage;
   String? latitude;
   String? longitude;
-  int rating;
+  num rating;
 
   Rider({
     required this.id,
@@ -400,5 +401,98 @@ class Rider {
         "latitude": latitude,
         "longitude": longitude,
         "rating": rating,
+      };
+}
+
+class Payment {
+  int? id;
+  int? rideRequestId;
+  int? riderId;
+  String? riderName;
+  DateTime? datetime;
+  double? totalAmount;
+  String? receivedBy;
+  num? adminCommission;
+  num? fleetCommission;
+  num? driverFee;
+  num? driverTips;
+  num? driverCommission;
+  String? txnId;
+  String? paymentType;
+  String? paymentStatus;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  Payment({
+    required this.id,
+    required this.rideRequestId,
+    required this.riderId,
+    required this.riderName,
+    required this.datetime,
+    required this.totalAmount,
+    required this.receivedBy,
+    required this.adminCommission,
+    required this.fleetCommission,
+    required this.driverFee,
+    required this.driverTips,
+    required this.driverCommission,
+    required this.txnId,
+    required this.paymentType,
+    required this.paymentStatus,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  factory Payment.fromJson(Map<String, dynamic> json) => Payment(
+        id: json["id"],
+        rideRequestId: json["ride_request_id"],
+        riderId: json["rider_id"],
+        riderName: json["rider_name"],
+        datetime:
+            json["datetime"] != null ? DateTime.parse(json["datetime"]) : null,
+        totalAmount: json["total_amount"] != null
+            ? double.parse(json["total_amount"].toString())
+            : json["total_amount"],
+        receivedBy: json["received_by"],
+        adminCommission: json["admin_commission"] != null
+            ? double.parse(json["admin_commission"].toString())
+            : json["admin_commission"],
+        fleetCommission: json["fleet_commission"] != null
+            ? double.parse(json["fleet_commission"].toString())
+            : json["fleet_commission"],
+        driverFee: json["driver_fee"] != null
+            ? double.parse(json["driver_fee"].toString())
+            : json["driver_fee"],
+        driverTips: json["driver_tips"] != null
+            ? double.parse(json["driver_tips"].toString())
+            : json["driver_tips"],
+        driverCommission: json["driver_commission"] != null
+            ? double.parse(json["driver_commission"].toString())
+            : json["driver_commission"],
+        txnId: json["txn_id"],
+        paymentType: json["payment_type"],
+        paymentStatus: json["payment_status"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "ride_request_id": rideRequestId,
+        "rider_id": riderId,
+        "rider_name": riderName,
+        "datetime": datetime?.toIso8601String(),
+        "total_amount": totalAmount,
+        "received_by": receivedBy,
+        "admin_commission": adminCommission,
+        "fleet_commission": fleetCommission,
+        "driver_fee": driverFee,
+        "driver_tips": driverTips,
+        "driver_commission": driverCommission,
+        "txn_id": txnId,
+        "payment_type": paymentType,
+        "payment_status": paymentStatus,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
       };
 }

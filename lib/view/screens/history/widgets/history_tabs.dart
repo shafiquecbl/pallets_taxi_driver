@@ -24,9 +24,8 @@ class HistoryTabItem extends StatelessWidget {
         ),
         child: CupertinoSlidingSegmentedControl(
           children: {
-            0: TabButton(selected: con.currentIndex == 0, text: "UpComming"),
-            1: TabButton(selected: con.currentIndex == 1, text: "Completed"),
-            2: TabButton(selected: con.currentIndex == 2, text: "Cancelled"),
+            0: TabButton(selected: con.currentIndex == 0, text: "Completed"),
+            1: TabButton(selected: con.currentIndex == 1, text: "Cancelled"),
           },
           thumbColor: primaryColor,
           backgroundColor: Colors.white,
