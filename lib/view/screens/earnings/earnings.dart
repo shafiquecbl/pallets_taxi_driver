@@ -10,8 +10,19 @@ import 'package:pallets_taxi_driver_pannel/view/base/primary_button.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/earnings/widgets/transaction_container.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
 
-class EarningScreen extends StatelessWidget {
+class EarningScreen extends StatefulWidget {
   const EarningScreen({super.key});
+
+  @override
+  State<EarningScreen> createState() => _EarningScreenState();
+}
+
+class _EarningScreenState extends State<EarningScreen> {
+  @override
+  void initState() {
+    // EarningController.find.getDriverEarnings();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

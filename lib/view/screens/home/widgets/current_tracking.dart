@@ -10,16 +10,7 @@ import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/start_ride/start_ride.dart';
 
 class CurrentTrackingContainer extends StatelessWidget {
-  final String currentOrderId;
-  final String currentLocation;
-  final String status;
-  final void Function()? onTap;
-  const CurrentTrackingContainer(
-      {super.key,
-      required this.currentOrderId,
-      required this.currentLocation,
-      required this.status,
-      this.onTap});
+  const CurrentTrackingContainer({super.key});
 
   @override
   Widget build(BuildContext context) {

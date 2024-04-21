@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
+import 'package:pallets_taxi_driver_pannel/data/model/response/user_model.dart';
 import 'package:pallets_taxi_driver_pannel/helper/price_converter.dart';
 import 'package:pallets_taxi_driver_pannel/utils/colors.dart';
 import 'package:pallets_taxi_driver_pannel/utils/images.dart';
@@ -13,22 +16,25 @@ class StatsWIdget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: defautSpacing),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 5,
-            child: TotalEarningButton(
-              totalEarning: PriceConverter.convertPrice(10),
-              onTap: () => DashboardController.find.selectedIndex = 1,
+      child: GetBuilder<ProfileController>(builder: (con) {
+        UserModel user = con.userModel!;
+        return Row(
+          children: [
+            Expanded(
+              child: TotalEarningButton(
+                totalEarning:
+                    PriceConverter.convertPrice(user.earnings?.toDouble() ?? 0),
+                onTap: () => DashboardController.find.selectedIndex = 1,
+              ),
             ),
-          ),
-          SizedBox(width: defautSpacing),
-          const Expanded(
-            flex: 5,
-            child: TotalRidesContainer(totalTrips: "3423"),
-          )
-        ],
-      ),
+            SizedBox(width: defautSpacing),
+            Expanded(
+              child: TotalRidesContainer(
+                  totalTrips: (user.totalTrips ?? 0).toString()),
+            )
+          ],
+        );
+      }),
     );
   }
 }
@@ -54,8 +60,7 @@ class TotalEarningButton extends StatelessWidget {
             ClipPath(
               clipBehavior: Clip.values[1],
               clipper: HomeContainerClipper(),
-              child: Container(
-                width: 160,
+              child: DecoratedBox(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(defautSpacing),
                   color: Colors.white,
@@ -91,8 +96,8 @@ class TotalEarningButton extends StatelessWidget {
             Positioned(
               right: 5.sp,
               child: Container(
-                width: 41,
-                height: 41,
+                width: 41.sp,
+                height: 41.sp,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,

@@ -1,7 +1,8 @@
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
-import 'package:pallets_taxi_driver_pannel/controller/chat_support_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/chat_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/dashboard_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/document_controller.dart';
+import 'package:pallets_taxi_driver_pannel/controller/earning_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/history_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/location_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
@@ -13,6 +14,7 @@ import 'package:pallets_taxi_driver_pannel/data/api/api_client.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/auth_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/chat_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/document_repo.dart';
+import 'package:pallets_taxi_driver_pannel/data/repository/earning_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/location_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/profile_repo.dart';
 import 'package:pallets_taxi_driver_pannel/data/repository/ride_repo.dart';
@@ -39,6 +41,7 @@ Future<void> init() async {
   Get.lazyPut(() => RideRepo(apiClient: Get.find()));
   Get.lazyPut(() => LocationRepo(apiClient: Get.find()));
   Get.lazyPut(() => ChatRepo(apiClient: Get.find()));
+  Get.lazyPut(() => EarningRepo(apiClient: Get.find()));
 
   // Controller
   Get.lazyPut(() => ThemeController(sharedPreferences: Get.find()));
@@ -52,4 +55,5 @@ Future<void> init() async {
   Get.lazyPut(() => LocationController(locationRepo: Get.find()));
   Get.lazyPut(() => RequestsController(rideRepo: Get.find()));
   Get.lazyPut(() => ChatController(chatRepo: Get.find()));
+  Get.lazyPut(() => EarningController(earningRepo: Get.find()));
 }

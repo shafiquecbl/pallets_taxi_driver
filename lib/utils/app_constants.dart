@@ -33,6 +33,9 @@ class AppConstants {
   static const String COMPLETE_RIDE_REQUEST = '/complete-riderequest';
   static const String SAVE_PAYMENT = '/save-payment';
 
+  // earning
+  static const String EARNING_URI = '/earning-list';
+
   // message
   static const String MESSAGE_URI = '/message/get';
   static const String SEND_MESSAGE_URI = '/message/send/driver';

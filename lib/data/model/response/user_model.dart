@@ -13,6 +13,8 @@ class UserModel {
   String image;
   String token;
   String status;
+  num? totalTrips;
+  num? earnings;
 
   UserModel({
     required this.id,
@@ -29,6 +31,8 @@ class UserModel {
     this.image = '',
     this.token = '',
     required this.status,
+    this.totalTrips,
+    this.earnings,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -51,6 +55,8 @@ class UserModel {
       image: json['profile_image'],
       token: json['api_token'] ?? '',
       status: json['status'],
+      totalTrips: json['total_trips'],
+      earnings: json['earnings'],
     );
   }
 
@@ -74,6 +80,8 @@ class UserModel {
       'profile_image': image,
       'token': token,
       'status': status,
+      'total_trips': totalTrips,
+      'earnings': earnings,
     };
   }
 }

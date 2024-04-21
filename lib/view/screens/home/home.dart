@@ -41,11 +41,7 @@ class HomeScreen extends StatelessWidget {
               const StatsWIdget(),
 
               /// Current Tracking
-              const CurrentTrackingContainer(
-                currentLocation: "Berlin",
-                currentOrderId: "#123456789",
-                status: "On the way",
-              ),
+              const CurrentTrackingContainer(),
 
               PageHeading(
                 title: "New Requests",

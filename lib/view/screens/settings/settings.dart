@@ -6,7 +6,6 @@ import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/profile/profile.dart';
-import 'package:pallets_taxi_driver_pannel/view/screens/chat/chat.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
 import 'widgets/setting_tile.dart';
@@ -52,9 +51,7 @@ class SettingScreen extends StatelessWidget {
           SettingTile(
             text: 'FAQ',
             icon: Iconsax.messages_35,
-            onTap: () {
-              launchScreen(const ChatScreen());
-            },
+            onTap: () {},
           ),
           SettingTile(
             text: 'Privacy Policy',
