@@ -1,4 +1,4 @@
-package com.example.pallets_taxi_driver_pannel
+package com.pallet.driver
 
 import io.flutter.embedding.android.FlutterActivity
 

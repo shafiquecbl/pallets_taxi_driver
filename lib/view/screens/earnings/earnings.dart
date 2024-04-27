@@ -20,7 +20,7 @@ class EarningScreen extends StatefulWidget {
 class _EarningScreenState extends State<EarningScreen> {
   @override
   void initState() {
-    // EarningController.find.getDriverEarnings();
+    // EarningController.find.getDriverEarnings('today');
     super.initState();
   }
 

@@ -6,6 +6,6 @@ class EarningRepo {
   final ApiClient apiClient;
   EarningRepo({required this.apiClient});
 
-  Future<Response?> getDriverEarnings() async =>
-      await apiClient.getData(AppConstants.EARNING_URI);
+  Future<Response?> getDriverEarnings(String type) async =>
+      await apiClient.postData(AppConstants.EARNING_URI, {"type": type});
 }

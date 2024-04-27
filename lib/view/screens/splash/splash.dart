@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pallets_taxi_driver_pannel/common/snackbar.dart';
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/profile_controller.dart';
 import 'package:pallets_taxi_driver_pannel/controller/spash_controller.dart';
@@ -39,14 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   init() {
     _onConnectivityChanged = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
-      bool isNotConnected = result != ConnectivityResult.wifi &&
-          result != ConnectivityResult.mobile;
-      showToast(
-        isNotConnected ? 'No Connection' : 'Connected',
-        success: !isNotConnected,
-      );
-    });
+        .listen((ConnectivityResult result) {});
     _splashController.initSharedData();
     _route();
   }

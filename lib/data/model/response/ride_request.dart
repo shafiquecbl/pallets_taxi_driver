@@ -129,8 +129,9 @@ class OnRideRequest {
   String userNote;
   String weight;
   String dimensions;
-  String equipments;
+  List<String> equipments;
   int helpers;
+  String commodity;
 
   OnRideRequest({
     required this.id,
@@ -198,6 +199,7 @@ class OnRideRequest {
     required this.dimensions,
     required this.equipments,
     required this.helpers,
+    required this.commodity,
   });
 
   factory OnRideRequest.fromJson(Map<String, dynamic> json) => OnRideRequest(
@@ -269,6 +271,7 @@ class OnRideRequest {
         dimensions: json["dimensions"],
         equipments: json["additional_equipments"],
         helpers: int.parse(json["helper"].toString()),
+        commodity: json["commodity"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -337,6 +340,7 @@ class OnRideRequest {
         "dimensions": dimensions,
         "additional_equipments": equipments,
         "helper": helpers,
+        "commodity": commodity,
       };
 }
 

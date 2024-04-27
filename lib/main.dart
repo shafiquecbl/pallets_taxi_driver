@@ -11,11 +11,14 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:pallets_taxi_driver_pannel/theme/light_theme.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/splash/splash.dart';
 
+import 'helper/notification_helper.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await di.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await NotificationHelper.initialize();
   runApp(const MainApp());
 }
 

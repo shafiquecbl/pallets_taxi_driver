@@ -9,8 +9,8 @@ class EarningController extends GetxController implements GetxService {
   EarningController({required this.earningRepo});
   static EarningController get find => Get.find<EarningController>();
 
-  Future<void> getDriverEarnings() async {
-    http.Response? response = await earningRepo.getDriverEarnings();
+  Future<void> getDriverEarnings(String type) async {
+    http.Response? response = await earningRepo.getDriverEarnings(type);
     if (response != null) {
       var data = jsonDecode(response.body);
       log('Earning Data: $data');

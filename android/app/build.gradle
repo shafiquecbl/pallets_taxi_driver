@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
 }
 
 def localProperties = new Properties()
@@ -23,7 +24,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.example.pallets_taxi_driver_pannel"
+    namespace "com.pallet.driver"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 

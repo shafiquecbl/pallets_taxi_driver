@@ -202,7 +202,7 @@ class RideRequestSheet extends StatelessWidget {
           const PageHeading(
               title: 'Equipment', topPadding: 30, bottomPadding: 10),
           Text(
-            ride.equipments,
+            ride.equipments.toString(),
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
