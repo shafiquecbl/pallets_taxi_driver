@@ -83,18 +83,12 @@ class OnRideRequest {
   String? riderContactNumber;
   String? driverProfileImage;
   String? riderProfileImage;
-  double startLatitude;
-  double startLongitude;
-  String startAddress;
-  double endLatitude;
-  double endLongitude;
-  String endAddress;
   String distanceUnit;
   DateTime? startTime;
   DateTime? endTime;
   num? distance;
   num? duration;
-  int seatCount;
+  int palletQuantity;
   String? reason;
   String status;
   num? tips;
@@ -132,6 +126,7 @@ class OnRideRequest {
   List<String> equipments;
   int helpers;
   String commodity;
+  List<DropPoints> dropPoints;
 
   OnRideRequest({
     required this.id,
@@ -151,18 +146,12 @@ class OnRideRequest {
     required this.riderContactNumber,
     required this.driverProfileImage,
     required this.riderProfileImage,
-    required this.startLatitude,
-    required this.startLongitude,
-    required this.startAddress,
-    required this.endLatitude,
-    required this.endLongitude,
-    required this.endAddress,
     required this.distanceUnit,
     required this.startTime,
     required this.endTime,
     required this.distance,
     required this.duration,
-    required this.seatCount,
+    required this.palletQuantity,
     required this.reason,
     required this.status,
     required this.tips,
@@ -200,6 +189,7 @@ class OnRideRequest {
     required this.equipments,
     required this.helpers,
     required this.commodity,
+    required this.dropPoints,
   });
 
   factory OnRideRequest.fromJson(Map<String, dynamic> json) => OnRideRequest(
@@ -220,12 +210,6 @@ class OnRideRequest {
         riderContactNumber: json["rider_contact_number"],
         driverProfileImage: json["driver_profile_image"],
         riderProfileImage: json["rider_profile_image"],
-        startLatitude: double.parse(json["start_latitude"].toString()),
-        startLongitude: double.parse(json["start_longitude"]),
-        startAddress: json["start_address"],
-        endLatitude: double.parse(json["end_latitude"]),
-        endLongitude: double.parse(json["end_longitude"]),
-        endAddress: json["end_address"],
         distanceUnit: json["distance_unit"],
         startTime: json["start_time"] != null
             ? DateTime.parse(json["start_time"])
@@ -234,7 +218,7 @@ class OnRideRequest {
             json["end_time"] != null ? DateTime.parse(json["end_time"]) : null,
         distance: json["distance"],
         duration: json["duration"],
-        seatCount: json["seat_count"],
+        palletQuantity: json["quantity"],
         reason: json["reason"],
         status: json["status"],
         tips: json["tips"],
@@ -269,9 +253,12 @@ class OnRideRequest {
         userNote: json["user_note"] ?? '',
         weight: json["weight"],
         dimensions: json["dimensions"],
-        equipments: json["additional_equipments"],
+        equipments:
+            List<String>.from(json["additional_equipments"].map((x) => x)),
         helpers: int.parse(json["helper"].toString()),
         commodity: json["commodity"] ?? '',
+        dropPoints: List<DropPoints>.from(
+            json["drop_points"].map((x) => DropPoints.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -292,18 +279,12 @@ class OnRideRequest {
         "rider_contact_number": riderContactNumber,
         "driver_profile_image": driverProfileImage,
         "rider_profile_image": riderProfileImage,
-        "start_latitude": startLatitude,
-        "start_longitude": startLongitude,
-        "start_address": startAddress,
-        "end_latitude": endLatitude,
-        "end_longitude": endLongitude,
-        "end_address": endAddress,
         "distance_unit": distanceUnit,
         "start_time": startTime,
         "end_time": endTime,
         "distance": distance,
         "duration": duration,
-        "seat_count": seatCount,
+        "quantity": palletQuantity,
         "reason": reason,
         "status": status,
         "tips": tips,
@@ -338,9 +319,10 @@ class OnRideRequest {
         "user_note": userNote,
         "weight": weight,
         "dimensions": dimensions,
-        "additional_equipments": equipments,
+        "additional_equipments": equipments.map((e) => e).toList(),
         "helper": helpers,
         "commodity": commodity,
+        "drop_points": List<dynamic>.from(dropPoints.map((x) => x.toJson())),
       };
 }
 
@@ -499,4 +481,46 @@ class Payment {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };
+}
+
+class DropPoints {
+  String? address;
+  double? latitude;
+  double? longitude;
+
+  DropPoints({
+    this.address,
+    this.latitude,
+    this.longitude,
+  });
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'address': address,
+      'latitude': latitude,
+      'longitude': longitude,
+    };
+  }
+
+  // from json
+  factory DropPoints.fromJson(Map<String, dynamic> map) {
+    return DropPoints(
+      address: map['address'],
+      latitude: map['latitude'],
+      longitude: map['longitude'],
+    );
+  }
+
+  // copywith
+  DropPoints copyWith({
+    String? address,
+    double? latitude,
+    double? longitude,
+  }) {
+    return DropPoints(
+      address: address ?? this.address,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+    );
+  }
 }

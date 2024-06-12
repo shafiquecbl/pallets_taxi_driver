@@ -10,7 +10,7 @@ import Firebase
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     FirebaseApp.configure()
-    GMSServices.provideAPIKey("AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o")
+    GMSServices.provideAPIKey("AIzaSyAPYUGF_e0Khz5MRk92m2RR8V1PIbV-qIk")
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

@@ -1,111 +1,45 @@
 {
   "project_info": {
-    "project_number": "1066394194657",
-    "project_id": "pallettaxidcodax",
-    "storage_bucket": "pallettaxidcodax.appspot.com"
+    "project_number": "115968420186",
+    "project_id": "pallettaxinew",
+    "storage_bucket": "pallettaxinew.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1066394194657:android:12e5a4b5e6d4aa89161da0",
+        "mobilesdk_app_id": "1:115968420186:android:9b9cdf9d89b25ac461eb63",
         "android_client_info": {
           "package_name": "com.pallet.driver"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1066394194657-shrh81lqfqv242rcsp10a81u42np2c29.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pallet.driver",
-            "certificate_hash": "6701169ee3d77324b36edc8129c3998022861aae"
-          }
-        },
-        {
-          "client_id": "1066394194657-uim3lf6cad319unbvg4k6l485g0navvu.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pallet.driver",
-            "certificate_hash": "5ca835f2c74626885836fdd599a807944e47839d"
-          }
-        },
-        {
-          "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o"
+          "current_key": "AIzaSyAPYUGF_e0Khz5MRk92m2RR8V1PIbV-qIk"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1066394194657-bc63pgstaqe15bk6doldc63v1i03ephj.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.pallet.taxi"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1066394194657:android:7743878a93b7efe7161da0",
+        "mobilesdk_app_id": "1:115968420186:android:0c9d432a922a011561eb63",
         "android_client_info": {
           "package_name": "com.pallet.taxi"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "1066394194657-e43vnpd196mon6irf3hkd6bd3prjpsui.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pallet.taxi",
-            "certificate_hash": "5ca835f2c74626885836fdd599a807944e47839d"
-          }
-        },
-        {
-          "client_id": "1066394194657-gqc3lhe5m351j3uj8rvhacn6l0kmh1de.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pallet.taxi",
-            "certificate_hash": "6701169ee3d77324b36edc8129c3998022861aae"
-          }
-        },
-        {
-          "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCS0Ne9nwgbvTl9Wvk373c5nEMX5LP418o"
+          "current_key": "AIzaSyAPYUGF_e0Khz5MRk92m2RR8V1PIbV-qIk"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1066394194657-qvle3t65kn765568m0flcsl6tav0es29.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1066394194657-bc63pgstaqe15bk6doldc63v1i03ephj.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.pallet.taxi"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

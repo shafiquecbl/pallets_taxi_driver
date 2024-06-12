@@ -35,7 +35,9 @@ class RideDetailScreen extends StatelessWidget {
       body: ListView(
         padding: pagePadding,
         children: [
-          AddressWidget(end: data.endAddress, start: data.startAddress),
+          AddressWidget(
+              end: data.dropPoints.last.address ?? '',
+              start: data.dropPoints.first.address ?? ''),
           SizedBox(height: 32.sp),
           Row(
             children: [

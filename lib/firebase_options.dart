@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDklgfSW703G-WVgfBhkzaxR3tdpUUnJYI',
-    appId: '1:305241309976:android:5aaaa607f362c090a0946d',
-    messagingSenderId: '305241309976',
-    projectId: 'maps-flutter-59331',
-    storageBucket: 'maps-flutter-59331.appspot.com',
+    apiKey: 'AIzaSyAPYUGF_e0Khz5MRk92m2RR8V1PIbV-qIk',
+    appId: '1:115968420186:android:9b9cdf9d89b25ac461eb63',
+    messagingSenderId: '115968420186',
+    projectId: 'pallettaxinew',
+    storageBucket: 'pallettaxinew.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC-0_tNFn3gs5ZYnnlc7QXNHDSefNxHi7w',
-    appId: '1:305241309976:ios:dd6556d48fab9422a0946d',
-    messagingSenderId: '305241309976',
-    projectId: 'maps-flutter-59331',
-    storageBucket: 'maps-flutter-59331.appspot.com',
-    androidClientId: '305241309976-mjvtsr0j9qp5b453lkpuu5j19php4meb.apps.googleusercontent.com',
-    iosClientId: '305241309976-g3e55udgn52u10glkhijjs33kn28gr2c.apps.googleusercontent.com',
-    iosBundleId: 'com.example.palletsTaxiDriverPannel',
+    apiKey: 'AIzaSyAOX5bhec3gn5TONdyS3pFQ38qkszTHs1o',
+    appId: '1:115968420186:ios:afef8363617e7cbb61eb63',
+    messagingSenderId: '115968420186',
+    projectId: 'pallettaxinew',
+    storageBucket: 'pallettaxinew.appspot.com',
+    iosBundleId: 'com.pallet.driverrr',
   );
+
 }

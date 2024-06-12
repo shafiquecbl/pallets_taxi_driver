@@ -60,7 +60,7 @@ class CurrentTrackingContainer extends StatelessWidget {
                       ),
                       SizedBox(height: 2.sp),
                       Text(
-                        ride.endAddress,
+                        ride.dropPoints.last.address ?? '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)

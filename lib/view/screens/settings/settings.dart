@@ -5,9 +5,11 @@ import 'package:pallets_taxi_driver_pannel/common/buttons.dart';
 import 'package:pallets_taxi_driver_pannel/controller/auth_controller.dart';
 import 'package:pallets_taxi_driver_pannel/helper/navigation.dart';
 import 'package:pallets_taxi_driver_pannel/utils/style.dart';
+import 'package:pallets_taxi_driver_pannel/view/screens/html/html_screen.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/profile/profile.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/document_verification/document_verification.dart';
 import 'package:pallets_taxi_driver_pannel/view/screens/notifications/notification.dart';
+import '../../../controller/spash_controller.dart';
 import 'widgets/setting_tile.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -42,7 +44,6 @@ class SettingScreen extends StatelessWidget {
               onChanged: (value) {},
             ),
           ),
-
           SettingTile(
             text: 'Profile',
             icon: Iconsax.profile_circle5,
@@ -50,19 +51,21 @@ class SettingScreen extends StatelessWidget {
           ),
           SettingTile(
             text: 'FAQ',
-            icon: Iconsax.messages_35,
-            onTap: () {},
+            icon: Iconsax.messages_3,
+            onTap: () => launchScreen(
+                HtmlScreen(html: SplashController.find.appSetting?.faq ?? '')),
           ),
           SettingTile(
             text: 'Privacy Policy',
             icon: Iconsax.security_user,
-            onTap: () {},
+            onTap: () => launchScreen(HtmlScreen(
+                html: SplashController.find.appSetting?.privacyPolicy ?? '')),
           ),
-
           SettingTile(
             text: 'About Us',
-            icon: Iconsax.info_circle5,
-            onTap: () {},
+            icon: Iconsax.info_circle,
+            onTap: () => launchScreen(HtmlScreen(
+                html: SplashController.find.appSetting?.aboutUs ?? '')),
           ),
 
           SettingTile(

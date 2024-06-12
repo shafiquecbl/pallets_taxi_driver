@@ -96,8 +96,8 @@ class RideRequestSheet extends StatelessWidget {
 
           CustomDivider(padding: 20.sp),
           AddressWidget(
-            end: ride.endAddress,
-            start: ride.startAddress,
+            end: ride.dropPoints.last.address ?? '',
+            start: ride.dropPoints.first.address ?? '',
             small: true,
           ),
           CustomDivider(padding: 20.sp),

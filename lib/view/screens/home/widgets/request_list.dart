@@ -114,7 +114,9 @@ class RequestWidget extends StatelessWidget {
               ],
             ),
             CustomDivider(padding: 20.sp),
-            AddressWidget(end: ride.endAddress, start: ride.startAddress),
+            AddressWidget(
+                end: ride.dropPoints.last.address ?? '',
+                start: ride.dropPoints.first.address ?? ''),
             CustomDivider(padding: 20.sp),
             Row(
               children: [

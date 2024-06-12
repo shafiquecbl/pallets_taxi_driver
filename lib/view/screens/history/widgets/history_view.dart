@@ -95,8 +95,9 @@ class HistoryWidget extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20.sp),
-              child:
-                  AddressWidget(end: ride.endAddress, start: ride.startAddress),
+              child: AddressWidget(
+                  end: ride.dropPoints.last.address ?? '',
+                  start: ride.dropPoints.first.address ?? ''),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
